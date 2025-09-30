@@ -543,15 +543,9 @@ $( ".menutoggle-btn" ).on( "click", function() {
 });</script><tw-passagedata pid="1" name="home" tags="" position="100,300" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité. 
 
 Bien que la nature ne l’ait guère avantagé pour un ork, il possèdait une splendide chevelure blonde.Cet attribut ainsi que son charisme légendaire lui permirent d’obtenir le titre de barde du clan et de séduire la belle et puissante Koralourk avec qui il eut deux filles: Mannagh et Olivarn, qui héritèrent de la blondeur de leur père et de la vaillance de leur mère.
-
-    
-    &lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
-    &lt;!-- wrapping this bit in a nobr tag helps avoid weird spacing --&gt;
+&lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;intro2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    
-  &lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
-
-
+&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[Continuer-&gt;intro2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="intro2" tags="" position="225,300" size="100,100">Un malencontreux coup du sort lui avait valu dans sa jeunesse de s’embrocher la paume de la main avec un coutelas d&#39;entraînement, tout juste bon à tartiner du foie gras, lors d’un duel épique avec une tranche de jambon. 
@@ -560,7 +554,6 @@ Depuis ce jour, la tribu avait décrété qu’aucun objet tranchant — même v
 Mais Mablark nourrissait un rêve : prouver sa valeur et gagner l’estime de ses pairs. Car selon la loi des steppes, celui qui accomplira un exploit guerrier pourra enfin prétendre à la reconnaissance et peut-être même renverser la mainmise des femelles autoritaires qui dirigent la tribu.
 
 Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de guerre éclatant, défier le destin, et surtout… être enfin pris au sérieux.
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;!-- wrapping this bit in a nobr tag helps avoid weird spacing --&gt;
@@ -568,7 +561,6 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
     
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[Continuer-&gt;le_grand_depart]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInterface" tags="" position="100,0" size="100,100">&lt;div id=&quot;layout&quot;&gt;
@@ -748,9 +740,9 @@ $(document).on(&quot;:passagerender&quot;, function () {
     }
 });
 
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="PassageHeader" tags="" position="1000,100" size="100,100">&lt;!-- a little script to boop longer passages back up to the top when going to new pages --&gt;
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="PassageHeader" tags="" position="1300,0" size="100,100">&lt;!-- a little script to boop longer passages back up to the top when going to new pages --&gt;
     &lt;script&gt;var myDiv = document.getElementById(&#39;passages&#39;);
-    myDiv.scrollTop = 0;&lt;/script&gt;</tw-passagedata><tw-passagedata pid="5" name="menu-flex" tags="nobr" position="1200,100" size="100,100">&lt;&lt;link &#39;&lt;div class=&quot;menu-item&quot;&gt;&lt;b&gt;00&lt;/b&gt; go back&lt;/div&gt;&#39;&gt;&gt;&lt;&lt;run Engine.backward()&gt;&gt;&lt;&lt;/link&gt;&gt;
+    myDiv.scrollTop = 0;&lt;/script&gt;</tw-passagedata><tw-passagedata pid="5" name="menu-flex" tags="nobr" position="1500,0" size="100,100">&lt;&lt;link &#39;&lt;div class=&quot;menu-item&quot;&gt;&lt;b&gt;00&lt;/b&gt; go back&lt;/div&gt;&#39;&gt;&gt;&lt;&lt;run Engine.backward()&gt;&gt;&lt;&lt;/link&gt;&gt;
 
     &lt;&lt;link &#39;&lt;div class=&quot;menu-item&quot;&gt;&lt;b&gt;01&lt;/b&gt; settings&lt;/div&gt;&#39;&gt;&gt;&lt;&lt;script&gt;&gt;UI.settings()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;
 
@@ -779,12 +771,9 @@ $(document).on(&quot;:passagerender&quot;, function () {
 &lt;span class=&#39;hud-icon&#39;&gt;💪🏼 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;$strength
 &lt;span class=&#39;hud-icon&#39;&gt;🛠️ &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;$craftmanship
 &lt;span class=&#39;hud-icon&#39;&gt;🙌🏽 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Respect: &lt;/span&gt;$charisma  </tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="350,300" size="100,100">&lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
-
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
 
 Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts lugubres où rôdent les échos des tambours du chaos. La tribu, rassemblée pour le voir partir, ricane à demi-mots : certains parient qu’il reviendra avant la nuit, d’autres qu’il se perdra avant même d’avoir franchi la rivière.
-
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;!-- wrapping this bit in a nobr tag helps avoid weird spacing --&gt;
@@ -792,27 +781,22 @@ Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts 
     
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[Continuer-&gt;le_grand_depart2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="le_grand_depart2" tags="" position="475,300" size="100,100">&lt;&lt;set $happiness = $happiness-2&gt;&gt;
-
 Ignorant les moqueries, Mablark ajuste son pagne, serre les dents, et jure devant Crom et les esprits ancestraux qu’il accomplira l’exploit qui fera taire les rires et forcera les anciens à courber l’échine. Ses pas s’enfoncent dans la poussière, son dos craque déjà, mais son cœur bat d’une ardeur nouvelle.
 
 Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de reconnaissance… et peut-être d’un baume miracle pour ses lombaires. Mais à peine avait-il franchi l’entrée du village que le destin le mettait déjà au défi.
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;!-- wrapping this bit in a nobr tag helps avoid weird spacing --&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;boulier_infaillible&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[Continuer-&gt;boulier_infaillible]]
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="13" name="boulier_infaillible" tags="" position="900,400" size="100,100">&lt;&lt;set $gamechapter = &quot;Le boulier infaillible&quot;&gt;&gt;
-
 C’est la fin de la grande récolte des baies de Mathematicus pour le village et malheur! Le compte n’estt pas bon.
 Le boulier sacré, témoin impartial des chiffres, grince et cliquette : il n’y a que 60 baies, bien loin des 140 proclamées avec aplomb par Mannagh la Patiente, fille aînée de Mablark le Glabre.
 
@@ -820,17 +804,14 @@ Mannagh, l’œil brillant et la voix assurée, accuse aussitôt l’artefact lu
 « Ce boulier est défectueux ! »
 
 Un silence lourd s’abat. Mettre en doute l’intégrité du Boulier est un blasphème pire que d’installer Windows sur un autel sacré.
-
 Le sang de Mablark bout dans ses veines : sa patience légendaire chancelle…
-
 &lt;&lt;nobr&gt;&gt;
 &lt;div class=&quot;choices&quot;&gt;
-	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[1] Croire Mannagh, le boulier doit être ensorcelé...&lt;/div&gt;&#39; &#39;boulier_infaillible1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[2] S\&#39;énerver et bien lui mettre la misère...&lt;/div&gt;&#39; &#39;boulier_infaillible2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[3] Expliquer calmement la loi des baies...&lt;/div&gt;&#39; &#39;boulier_infaillible3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[1] Croire Mannagh, le boulier doit être ensorcelé, jeter la vieille sorcière de la tribu au bûcher pour tenter de rompre la malédiction.&lt;/div&gt;&#39; &#39;boulier_infaillible1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[2] S\&#39;énerver et bien lui mettre la misère devant tout le clan, après tout elle le mérite !&lt;/div&gt;&#39; &#39;boulier_infaillible2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[3] Expliquer calmement la loi des baies avec pédagogie infinie.&lt;/div&gt;&#39; &#39;boulier_infaillible3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;boulier_infaillible1]]
     [[2-&gt;boulier_infaillible2]]
@@ -839,47 +820,35 @@ Le sang de Mablark bout dans ses veines : sa patience légendaire chancelle…
 =&lt;5 =&gt; il se passe rien, tu t&#39;attendais à quoi ? 
 =6 =&gt; oh putain c&#39;était vrai, quand la mégère a rendu son dernier souffle, le boulier a pris feu, la vieille sorcière l&#39;avait ensorcelé !
 N&#39;empêche ça va bien être la hess quand même l&#39;hiver prochain,
-
-
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;rhume_scelerat&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="boulier_infaillible2" tags="" position="1300,450" size="100,100">&lt;&lt;set $happiness = $happiness-2&gt;&gt;
-
 Ça y est Mannagh la patiente a appris sa leçon...ou pas ! On verra l&#39;année prochaine !  
-
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;rhume_scelerat&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="boulier_infaillible3" tags="" position="1300,600" size="100,100">&lt;&lt;set $happiness = $happiness-1&gt;&gt;
-
 Jet de Sagesse :
 &gt;4 Réussite → Mannagh comprend, gagne +1 en Savoir et le calme revient.
 
 =&gt;4 Échec → Tu t’embrouilles dans une métaphore sur les Fremen et les épices, tout le monde décroche, -1 Moral.
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;rhume_scelerat&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="rhume_scelerat" tags="" position="1600,425" size="100,100">&lt;&lt;set $gamechapter = &quot;Le rhume scélérat&quot;&gt;&gt;
-
 Le problème du boulier réglé, Mablark le glabre peut enfin se mettre en route. Le soleil de la fin d’été réchauffe doucement sa peau. Il atteint l&#39;orée de la forêt en fin d’après-midi. Le vent secoue délicatement les branches et un doux parfum de sous-bois humide émane du tapis de feuilles mortes qui étouffe ses pas. Soudain, Mablark le Glabre sent un courant d’air perfide lui chatouiller les sinus.
 Une sournoise malédiction virale, invoquée par les chamans de la secte GAFAM (Garde des Âmes Faussées et des Artefacts Maudits), s’infiltre dans son corps déjà fragile.
 
@@ -887,8 +856,6 @@ Ses narines se mettent à couler comme deux cascades du Styx, sa gorge rugit com
 
 Mablark le sait : ce n’est pas un simple rhume…
 C’est le Rhume Scélérat, ennemi juré des constitutions fragiles et des hypochondres de légende.
-
-
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;!-- wrapping this bit in a nobr tag helps avoid weird spacing --&gt;
@@ -897,12 +864,10 @@ C’est le Rhume Scélérat, ennemi juré des constitutions fragiles et des hypo
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Tenter l\’option technologique interdite : avaler un cachet BigPharma™ (blasphème contre le Kernel sacré).&lt;/div&gt;&#39; &#39;rhume3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume1]]
     [[2-&gt;rhume2]]
     [[3-&gt;rhume3]]
-    
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="rhume1" tags="" position="1825,275" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="rhume2" tags="" position="1850,425" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="rhume3" tags="" position="1850,600" size="100,100"></tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
