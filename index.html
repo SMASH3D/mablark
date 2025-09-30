@@ -678,7 +678,77 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
   }
 }
 
-&lt;/style&gt;</tw-passagedata><tw-passagedata pid="4" name="PassageHeader" tags="" position="1000,100" size="100,100">&lt;!-- a little script to boop longer passages back up to the top when going to new pages --&gt;
+.choice-item.selected {
+  background-color: var(--accent-55); /* couleur d’arrière-plan */
+  color: var(--accent);              /* texte accentué */
+  padding-left: 8px;
+  border-left: 3px solid var(--accent);
+}
+&lt;/style&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+// Gestion navigation clavier sur les choix Twine
+$(document).on(&quot;keydown&quot;, function (event) {
+    let $choices = $(&quot;.choices .choice-item&quot;);
+    if ($choices.length === 0) return;
+
+    // Vérifie si un élément est déjà sélectionné
+    let $current = $choices.filter(&quot;.selected&quot;);
+    let index = $choices.index($current);
+
+    switch (event.key) {
+        case &quot;ArrowDown&quot;:
+            event.preventDefault();
+            if (index &lt; $choices.length - 1) {
+                $current.removeClass(&quot;selected&quot;);
+                $choices.eq(index + 1).addClass(&quot;selected&quot;);
+            } else {
+                // boucle au début
+                $current.removeClass(&quot;selected&quot;);
+                $choices.eq(0).addClass(&quot;selected&quot;);
+            }
+            break;
+
+        case &quot;ArrowUp&quot;:
+            event.preventDefault();
+            if (index &gt; 0) {
+                $current.removeClass(&quot;selected&quot;);
+                $choices.eq(index - 1).addClass(&quot;selected&quot;);
+            } else {
+                // boucle à la fin
+                $current.removeClass(&quot;selected&quot;);
+                $choices.eq($choices.length - 1).addClass(&quot;selected&quot;);
+            }
+            break;
+
+        case &quot;Enter&quot;:
+            event.preventDefault();
+            if ($current.length) {
+                $current.click(); // active le choix en surbrillance
+            }
+            break;
+
+        default:
+            // raccourcis numériques (1-9)
+            if (event.key &gt;= &quot;1&quot; &amp;&amp; event.key &lt;= &quot;9&quot;) {
+                let numIndex = parseInt(event.key, 10) - 1;
+                if ($choices.length &gt; numIndex) {
+                    $choices.eq(numIndex).click();
+                }
+            }
+    }
+});
+
+// Quand un nouveau passage est affiché, on sélectionne automatiquement le premier choix
+$(document).on(&quot;:passagerender&quot;, function () {
+    let $choices = $(&quot;.choices .choice-item&quot;);
+    $choices.removeClass(&quot;selected&quot;);
+    if ($choices.length) {
+        $choices.eq(0).addClass(&quot;selected&quot;);
+    }
+});
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="PassageHeader" tags="" position="1000,100" size="100,100">&lt;!-- a little script to boop longer passages back up to the top when going to new pages --&gt;
     &lt;script&gt;var myDiv = document.getElementById(&#39;passages&#39;);
     myDiv.scrollTop = 0;&lt;/script&gt;</tw-passagedata><tw-passagedata pid="5" name="menu-flex" tags="nobr" position="1200,100" size="100,100">&lt;&lt;link &#39;&lt;div class=&quot;menu-item&quot;&gt;&lt;b&gt;00&lt;/b&gt; go back&lt;/div&gt;&#39;&gt;&gt;&lt;&lt;run Engine.backward()&gt;&gt;&lt;&lt;/link&gt;&gt;
 
@@ -754,12 +824,11 @@ Un silence lourd s’abat. Mettre en doute l’intégrité du Boulier est un bla
 Le sang de Mablark bout dans ses veines : sa patience légendaire chancelle…
 
 &lt;&lt;nobr&gt;&gt;
-    &lt;div class=&quot;choices&quot;&gt;
-    &lt;!-- wrapping this bit in a nobr tag helps avoid weird spacing --&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Croire Mannagh, le boulier doit être ensorcelé, jeter la vieille sorcière de la tribu au bûcher pour tenter de rompre la malédiction.&lt;/div&gt;&#39; &#39;boulier_infaillible1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;S\&#39;énerver et bien lui mettre la misère devant tout le clan, après tout elle le mérite !&lt;/div&gt;&#39; &#39;boulier_infaillible2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Expliquer calmement la loi des baies avec pédagogie infinie.&lt;/div&gt;&#39; &#39;boulier_infaillible3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-  &lt;/div&gt;
+&lt;div class=&quot;choices&quot;&gt;
+	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[1] Croire Mannagh, le boulier doit être ensorcelé...&lt;/div&gt;&#39; &#39;boulier_infaillible1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[2] S\&#39;énerver et bien lui mettre la misère...&lt;/div&gt;&#39; &#39;boulier_infaillible2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+	&lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;[3] Expliquer calmement la loi des baies...&lt;/div&gt;&#39; &#39;boulier_infaillible3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 
 &lt;div class=&#39;no-show&#39;&gt;
