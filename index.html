@@ -563,7 +563,7 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[Continuer-&gt;le_grand_depart]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInterface" tags="" position="900,250" size="100,100">&lt;div id=&quot;layout&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInterface" tags="" position="700,250" size="100,100">&lt;div id=&quot;layout&quot;&gt;
 
   &lt;!-- HUD colonne gauche --&gt;
   &lt;aside id=&quot;hud&quot;&gt;
@@ -632,9 +632,9 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 /* Passages décalés */
 #passages {
   flex: 1;
-  max-width: 1000px;
-  margin: 2em auto;
-  margin-top: auto;
+  max-width: 96%;
+  margin-right: 1em;
+  margin-top: 0px;
   padding: 0 3em;
   overflow-y: auto;
 }
@@ -842,12 +842,10 @@ Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de
     [[Continuer-&gt;boulier_infaillible]]
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="13" name="boulier_infaillible" tags="" position="350,350" size="100,100">&lt;&lt;set $gamechapter = &quot;Le boulier infaillible&quot;&gt;&gt;
-C’est la fin de la grande récolte des baies de Mathematicus pour le village et malheur! Le compte n’estt pas bon.
-Le boulier sacré, témoin impartial des chiffres, grince et cliquette : il n’y a que 60 baies, bien loin des 140 proclamées avec aplomb par Mannagh la Patiente, fille aînée de Mablark le Glabre.
-
+C’est la fin de la grande récolte des baies de Mathematicus pour le village et malheur! Le compte n’y est pas.
+Le boulier sacré, témoin impartial des chiffres, grince et cliquette : il n’y a que 90 baies, bien loin des 140 proclamées avec aplomb par Mannagh la Patiente, fille aînée de Mablark le Glabre.
 Mannagh, l’œil brillant et la voix assurée, accuse aussitôt l’artefact lui-même :
 « Ce boulier est défectueux ! »
-
 Un silence lourd s’abat. Mettre en doute l’intégrité du Boulier est un blasphème pire que d’installer Windows sur un autel sacré.
 Le sang de Mablark bout dans ses veines : sa patience légendaire chancelle…
 &lt;&lt;nobr&gt;&gt;
@@ -861,24 +859,28 @@ Le sang de Mablark bout dans ses veines : sa patience légendaire chancelle…
     [[1-&gt;boulier_infaillible1]]
     [[2-&gt;boulier_infaillible2]]
     [[3-&gt;boulier_infaillible3]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="boulier_infaillible1" tags="" position="225,525" size="100,100">Mablark, convaincu que l’affaire sent le soufre, se range à l’avis du clan : le boulier est ensorcelé.
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="boulier_infaillible1" tags="" position="225,525" size="100,100">Mablark, convaincu que l’affaire sent le soufre, se range à l’intuition de son fille : le boulier est ensorcelé, Mannagh ne se trompe jamais.
 « Brûlons la vieille sorcière ! » tonne-t-il.
-
 &lt;&lt;set _jet = random(1,6)&gt;&gt;
 Le héros jette un dé de chance (D6) et obtient un &lt;span class=&#39;result&#39;&gt;_jet&lt;/span&gt;.
-
 &lt;&lt;if _jet &lt;= 5&gt;&gt;
     &lt;&lt;set $charisma += 2&gt;&gt;
     &lt;&lt;set $wisdom -= 1&gt;&gt;
 Le bûcher s’élève, la mégère crie, la foule hurle. Puis… plus rien.
 Pas d’éclair, pas de malédiction rompue. Juste l’odeur de cheveux brûlés qui flotte au-dessus du campement.
 Mablark hausse les épaules : « Tu t’attendais à quoi, gros malin ? »
-
-Cette démonstration de cruauté gratuite lui fait regagner &lt;span class=&quot;good-news&quot;&gt;2 points de charisme&lt;/span&gt; mais lui coûte &lt;span class=&quot;bad-news&quot;&gt;1 point de sagesse&lt;/span&gt;.
-&lt;&lt;elseif _jet == 6&gt;&gt;
+Cette démonstration de cruauté gratuite lui fait regagner l&#39;estime du clan qui affectionne l&#39;odeur du bucher mais lui coûte un peu de sagesse.
+— &lt;span class=&quot;good-news&quot;&gt;Charisme +2&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Sagesse -1&lt;/span&gt;
+&lt;&lt;elseif _jet &gt;= 5&gt;&gt;
+    &lt;&lt;set $charisma += 3&gt;&gt;
+    &lt;&lt;set $wisdom += 1&gt;&gt;
+&lt;span class=&#39;result&#39;&gt;Jet critique !&lt;/span&gt;
 Au dernier râle de la sorcière, le boulier s’embrase spontanément !
 Les guerriers reculent, effarés : la vieille l’avait bel et bien ensorcelé.
-Le mystère est levé… mais avec une récolte détruite et une doyenne carbonisée, l’hiver prochain s’annonce d’une hess monumentale.
+Le mystère est levé… mais avec une récolte détruite et une doyenne carbonisée, l’hiver prochain s’annonce d’une galère monumentale. Finis les décomptes foireux, le clan est reconnaissant.
+— &lt;span class=&quot;good-news&quot;&gt;Charisme +3&lt;/span&gt;
+— &lt;span class=&quot;good-news&quot;&gt;Sagesse +2&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;nobr&gt;&gt;
@@ -908,11 +910,22 @@ Mannagh, la joue tuméfiée, bredouille un « J’ai compris… » à peine cré
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="boulier_infaillible3" tags="" position="525,525" size="100,100">&lt;&lt;set $happiness = $happiness-1&gt;&gt;
-Jet de Sagesse :
-&gt;4 Réussite → Mannagh comprend, gagne +1 en Savoir et le calme revient.
-
-=&gt;4 Échec → Tu t’embrouilles dans une métaphore sur les Fremen et les épices, tout le monde décroche, -1 Moral.
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="boulier_infaillible3" tags="" position="525,525" size="100,100">&lt;&lt;set _jet = random(1,$wisdom)&gt;&gt;
+Mablark jette un dé de sagesse (D$wisdom) et obtient un &lt;span class=&#39;result&#39;&gt;_jet&lt;/span&gt;.
+&lt;&lt;if _jet &gt; 5&gt;&gt;
+    &lt;&lt;set $charisma += 1&gt;&gt;
+    &lt;&lt;set $wisdom += 1&gt;&gt;
+    &lt;&lt;set $happiness += 1&gt;&gt;
+Mannagh comprend, gagne +1 en Savoir et le calme revient.
+Cette démonstration de sagesse et de patience paternelle lui vaut le respect de Koralagh, soulagée de ne pas avoir eu à s&#39;y coller.
+— &lt;span class=&quot;good-news&quot;&gt;Charisme +1&lt;/span&gt;
+— &lt;span class=&quot;good-news&quot;&gt;Moral +1&lt;/span&gt;
+— &lt;span class=&quot;good-news&quot;&gt;Sagesse +1&lt;/span&gt;
+&lt;&lt;elseif _jet &lt;= 5&gt;&gt;
+    &lt;&lt;set $happiness += 1&gt;&gt;
+Le patriarche s&#39;embrouille dans une métaphore sur les Fremen et les épices, tout le monde décroche.
+— &lt;span class=&quot;bad-news&quot;&gt;Moral -1&lt;/span&gt;.
+&lt;&lt;/if&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;rhume_scelerat&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -962,7 +975,7 @@ Il obtient un &lt;span class=&#39;result&#39;&gt;_jet&lt;/span&gt;.
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Prendre la direction des montagnes.&lt;/div&gt;&#39;&lt;&lt;/link&gt;&gt; 
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Prendre la direction des montagnes.&lt;/div&gt;&#39; &#39;skyvall&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Rester se reposer.&lt;/div&gt;&#39; &#39;repos&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
@@ -1043,6 +1056,9 @@ Il regagne &lt;span class=&quot;good-news&quot;&gt;1 PV.&lt;/span&gt;
     [[2-&gt;repos]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="skyvall" tags="" position="500,1100" size="100,100">&lt;&lt;set $gamechapter = &quot;Les montagnes de Skiväll&quot;&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+
+&lt;img src=&quot;/img/skyvall.jpeg&quot;&gt;
+
 Après cet épisode viral, Koralourk impose à Mablark une cure thermale dans les montagnes de Skiväll pour reprendre des points de vitalité. Le clan des Blarielles, loue un chariot de fer blanc à la guilde des Loueurs Usuriers et parvient après un voyage sans encombre à la grotte des sources chaudes. Après un bain soufré rassérénant, Mablark accompagne Olivarn pour qu’elle effectue son premier exploit ork: la descente glacée depuis la cime de Skiväll. 
 Munis de planches vernis, père et fille atteignent le haut de la Montagne. Mablark, dos fragile mais cœur vaillant, s\’élance avec ce qui ressemblerait presque à de l’assurance. À ses côtés, Olivarn glisse avec une agilité insolente, portée par le vent. Alors qu’elle dépasse son père, Olivarn lui lance :
 — « Allez, père ! On dirait un nain arthritique ! » Piqué dans son orgueil, Mablark se penche, prend de la vitesse et fonce tête baissée sur la piste glacée.
