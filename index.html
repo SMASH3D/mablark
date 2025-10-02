@@ -608,14 +608,25 @@ img {
 	color: green;
 }
 .hud-val.flash-pos {
-  color: limegreen;
+  color: limegreen !important;
   font-weight: bold;
-  transition: color 0.5s ease;
+  animation: flashPos 1s ease;
 }
+
 .hud-val.flash-neg {
-  color: crimson;
+  color: crimson !important;
   font-weight: bold;
-  transition: color 0.5s ease;
+  animation: flashNeg 1s ease;
+}
+
+@keyframes flashPos {
+  0%   { color: limegreen; }
+  100% { color: inherit; }
+}
+
+@keyframes flashNeg {
+  0%   { color: crimson; }
+  100% { color: inherit; }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">// for icons
 // importStyles('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
@@ -726,33 +737,48 @@ $(document).on(":passagerender", function () {
     }
 });
 
-window.nextDay = function(vars) {
-  if (!vars) return;
-  vars.day = (vars.day || 0) + 1;
+Macro.add("nextDay", {
+  handler() {
+    let vars = State.variables;
+    vars.day = (vars.day || 0) + 1;
 
-  if ((vars.dot_duration || 0) > 0) {
-    vars.health = (vars.health || 0) - (vars.dot_dps || 0);
-    vars.dot_duration = Math.max(0, vars.dot_duration - 1);
+    if ((vars.dot_duration || 0) > 0) {
+      vars.health = (vars.health || 0) - (vars.dot_dps || 0);
+      vars.dot_duration = Math.max(0, vars.dot_duration - 1);
+    }
   }
-};
+});
 
-window.skipDays = function(vars, n) {
-  n = parseInt(n, 10) || 1;
-  for (let i = 0; i < n; i++) {
-    window.nextDay(vars);
+Macro.add("skipDays", {
+  handler() {
+    let n = parseInt(this.args[0], 10) || 1;
+    for (let i = 0; i < n; i++) {
+      Macro.get("nextDay").handler.call(this);
+    }
   }
-};
-window.flashStat = function (statId, delta) {
-  const val = document.getElementById(statId);
-  if (!val) return;
+});
 
-  const cssClass = delta > 0 ? "flash-pos" : "flash-neg";
-  val.classList.add(cssClass);
-  console.log(cssClass);
+Macro.add("statmod", {
+  skipArgs: false,
+  tags: [],
+  handler() {
+    if (this.args.length < 2 || this.args.length % 2 !== 0) {
+      return this.error("Usage: <<statmod varName delta [varName delta ...]>>");
+    }
 
-  // enlève l'effet après un court délai
-  //setTimeout(() => val.classList.remove(cssClass), 12000);
-};</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
+    for (let i = 0; i < this.args.length; i += 2) {
+      const varName = this.args[i];
+      const delta   = parseInt(this.args[i + 1], 10) || 0;
+
+      if (State.variables[varName] == null) {
+        State.variables[varName] = 0;
+      }
+      State.variables[varName] += delta;
+    }
+  }
+});
+
+</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
 &lt;img src=&quot;img/family.jpeg&quot;&gt;
 Bien que la nature ne l’ait guère avantagé pour un ork, il possèdait une splendide chevelure blonde.Cet attribut ainsi que son charisme légendaire lui permirent d’obtenir le titre de barde du clan et de séduire la belle et puissante Koralourk avec qui il eut deux filles: Mannagh et Olivarn, qui héritèrent de la blondeur de leur père et de la vaillance de leur mère.
 &lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
@@ -828,7 +854,7 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;span class=&#39;hud-icon&#39;&gt;🙌🏽&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;&lt;span id=&quot;charisma&quot; class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
-&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;&lt;nextDay&gt;&gt;
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
 &lt;&lt;/nobr&gt;&gt;
 Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts lugubres où rôdent les échos des tambours du chaos. La tribu, rassemblée pour le voir partir, ricane à demi-mots : certains parient qu’il reviendra avant la nuit, d’autres qu’il se perdra avant même d’avoir franchi la rivière.
@@ -841,9 +867,8 @@ Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts 
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[Continuer-&gt;le_grand_depart2]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="le_grand_depart2" tags="" position="400,150" size="100,100">&lt;&lt;nobr&gt;&gt;
-&lt;&lt;set $happiness = $happiness-2&gt;&gt;
-&lt;&lt;run window.flashStat(&quot;mood&quot;, -2)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="le_grand_depart2" tags="" position="400,150" size="100,100">&lt;&lt;statmod &quot;happiness&quot; -2&gt;&gt;&lt;&lt;/statmod&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
 Ignorant les moqueries, Mablark ajuste son pagne, serre les dents, et jure devant Crom et les esprits ancestraux qu’il accomplira l’exploit qui fera taire les rires et forcera les anciens à courber l’échine. Ses pas s’enfoncent dans la poussière, son dos craque déjà, mais son cœur bat d’une ardeur nouvelle.
 &lt;&lt;/nobr&gt;&gt;
 Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de reconnaissance… et peut-être d’un baume miracle pour ses lombaires. Mais à peine avait-il franchi l’entrée du village que le destin le mettait déjà au défi.
@@ -858,7 +883,7 @@ Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="13" name="boulier_infaillible" tags="" position="350,350" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $gamechapter = &quot;Le boulier infaillible&quot;&gt;&gt;
-&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;&lt;nextDay&gt;&gt;
 C’est la fin de la grande récolte des baies de Mathematicus pour le village et malheur! Le compte n’y est pas.
 &lt;&lt;/nobr&gt;&gt;
 Le boulier sacré, témoin impartial des chiffres, grince et cliquette : il n’y a que 90 baies, bien loin des 140 proclamées avec aplomb par Mannagh la Patiente, fille aînée de Mablark le Glabre.
@@ -883,10 +908,7 @@ Le sang de Mablark bout dans ses veines : sa patience légendaire chancelle…
 Le héros jette un dé de chance (D6) et obtient un &lt;span class=&#39;result&#39;&gt;_jet.&lt;/span&gt;
 &lt;&lt;if _jet &lt;= 5&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
-&lt;&lt;set $charisma += 2&gt;&gt;
-&lt;&lt;run window.flashStat(&quot;charisma&quot;, +2)&gt;&gt;
-&lt;&lt;set $wisdom -= 1&gt;&gt;
-&lt;&lt;run window.flashStat(&quot;wisdom&quot;, -1)&gt;&gt;
+&lt;&lt;statmod &quot;charisma&quot; +2 &quot;wisdom&quot; -1&gt;&gt;&lt;&lt;/statmod&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Le bûcher s’élève, la mégère crie, la foule hurle. Puis… plus rien. Pas d’éclair, pas de malédiction rompue. Juste l’odeur de cheveux brûlés qui flotte au-dessus du campement. Mablark hausse les épaules : « Tu t’attendais à quoi, gros malin ? »
 Cette démonstration de cruauté gratuite lui fait regagner l&#39;estime du clan qui affectionne l&#39;odeur du bucher mais lui coûte un peu de sagesse.
@@ -894,10 +916,7 @@ Cette démonstration de cruauté gratuite lui fait regagner l&#39;estime du clan
 — &lt;span class=&quot;bad-news&quot;&gt;Sagesse -1&lt;/span&gt;
 &lt;&lt;elseif _jet &gt;= 5&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
-    &lt;&lt;set $charisma += 3&gt;&gt;
-    &lt;&lt;run window.flashStat(&quot;charisma&quot;, +3)&gt;&gt;
-    &lt;&lt;set $wisdom += 1&gt;&gt;
-    &lt;&lt;run window.flashStat(&quot;wisdom&quot;, +1)&gt;&gt;
+	&lt;&lt;statmod &quot;charisma&quot; +3 &quot;wisdom&quot; +1&gt;&gt;&lt;&lt;/statmod&gt;&gt;
 &lt;span class=&#39;result&#39;&gt;Jet critique !&lt;/span&gt;
 &lt;&lt;/nobr&gt;&gt;
 Au dernier râle de la sorcière, le boulier s’embrase spontanément !
@@ -914,9 +933,7 @@ Le mystère est levé… mais avec une récolte détruite et une doyenne carboni
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="boulier_infaillible2" tags="" position="375,525" size="100,100">&lt;&lt;nobr&gt;&gt;
-&lt;&lt;set $charisma += 2&gt;&gt;
-&lt;&lt;set $happiness -= 1&gt;&gt;
-&lt;&lt;set $wisdom -= 1&gt;&gt;
+	&lt;&lt;statmod &quot;charisma&quot; +2 &quot;wisdom&quot; -1 happiness -1&gt;&gt;&lt;&lt;/statmod&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Mablark n’en peut plus. Il soulève Mannagh par le col devant tout le clan, et lui met une correction magistrale digne d’une tragédie grecque.
 Les coups pleuvent, l’ego saigne, et la foule acclame ce festival de baffes pédagogiques.
@@ -962,7 +979,7 @@ Le patriarche s’embrouille dans une métaphore sur les Fremen et les épices, 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="rhume_scelerat" tags="" position="375,750" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $gamechapter = &quot;Le rhume scélérat&quot;&gt;&gt;
 &lt;&lt;set $health -= 1&gt;&gt;
-&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;&lt;nextDay&gt;&gt;
 Le problème du boulier réglé, Mablark le glabre peut enfin se mettre en route. Le soleil de la fin d’été réchauffe doucement sa peau. Il atteint l&#39;orée de la forêt en fin d’après-midi. Le vent secoue délicatement les branches et un doux parfum de sous-bois humide émane du tapis de feuilles mortes qui étouffe ses pas. Soudain, Mablark le Glabre sent un courant d’air perfide lui chatouiller les sinus.
 &lt;&lt;/nobr&gt;&gt;
 Une sournoise malédiction virale, invoquée par les chamans de la secte GAFAM (Garde des Âmes Faussées et des Artefacts Maudits), s’infiltre dans son corps déjà fragile.
@@ -1090,7 +1107,7 @@ Après cet épisode viral, Koralourk impose à Mablark une cure thermale dans le
     [[1-&gt;skyvall1]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="22" name="repos" tags="" position="225,1100" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $health += 1&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Après une journée caché dans la paille de l&#39;étable au milieu des aurochs, Mablark recouvre une partie de sa vénérable vigueur.
 
@@ -1107,7 +1124,7 @@ Il regagne &lt;span class=&quot;good-news&quot;&gt;1 PV.&lt;/span&gt; mais passe
     [[1-&gt;skyvall]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="23" name="chariot_maudit" tags="" position="350,1500" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $gamechapter = &quot;Le Chariot Maudit des Steppes&quot;&gt;&gt;
-&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;&lt;nextDay&gt;&gt;
 Après un long périple héroïque, bravant les éléments dans les monts de Skiväll, Mablark le Glabre revient enfin dans son fief. Son destrier mécanique — un colossal chariot de fer aux parois blanches, loué à la guilde des Loueurs Usuriers — semble intact malgré tant d’aventures.
 &lt;&lt;/nobr&gt;&gt;
 Confiant, presque trop, Mablark entreprend la dernière épreuve : le garer devant sa demeure pour décharger l’arsenal de voyage de sa compagne et ses deux filles, les prises de leur dernière chasse et les 5 kg de fromage de Montagne qui l’avaient fait saliver durant tout le voyage.
@@ -1202,8 +1219,8 @@ Mablark s’acquitte de sa dette.
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;marchand]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="28" name="metal" tags="" position="350,2125" size="100,100">&lt;&lt;nobr&gt;&gt;
-	&lt;&lt;set $gamechapter = &quot;La Nuit du Métal Carnassier&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;set $gamechapter = &quot;La Nuit du Métal Carnassier&quot;&gt;&gt;	
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Parfaitement remis de ses dernières mésaventures, Mablark décide qu’il est temps de reprendre le chemin de sa quête héroïque. Notre valeureux guerrier équipé de son gourdin Anduril est prêt à affronter les plus grands périls. Cette fois-ci, Mablark traverse la forêt d’Arrakis sans encombre et parvient à un village d’humains. Alors qu’il s’apprêtait à franchir les portes de la cité, des sonorités sataniques attirent l’oreille affutée de Mablark. Se guidant à l’aide de ses mélopées venues du tréfont des enfers, il parvient devant l&#39;entrée d&#39;une grotte dans laquelle les tambours du chaos résonnent. Ca fait bien longtemps qu&#39;il n&#39;a pas dansé pour honorer Crom. Heureux hasard, il s’agit des Meatbodies, des bardes invocateurs de Mort très en vogue chez les orks.
 &lt;&lt;nobr&gt;&gt;
@@ -1244,7 +1261,7 @@ Faute de WAF, pas le temps de niaiser, filer droit et rentrer étendre le linge.
     [[1-&gt;tavern]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="31" name="marchand" tags="" position="350,1875" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $gamechapter = &quot;Le livreur éternel&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Alors que Mablark quitte la grotte sombre, en titubant à cause de la quantité trop importante d’hydromel ingéré, il aperçoit, dans un coin sombre, l’enseigne lumineuse de Jeff Bezorc le Livreur Éternel qui brille comme un soleil. Un éclair de lucidité traverse Mablark qui songe alors qu’il pourrait être judicieux de s’équiper avant de poursuivre son aventure.
 
@@ -1294,7 +1311,7 @@ Le marchand propose les objets suivants:
     [[7-&gt;metal]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="skyvall1" tags="" position="500,1225" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $gamechapter = &quot;Les montagnes de Skiväll&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 La famille parvient après un voyage sans encombre à la grotte des sources chaudes. Après un bain soufré rassérénant, Mablark accompagne Olivarn pour qu’elle effectue son premier exploit ork: la descente glacée depuis la cime de Skiväll. 
 Munis de planches vernis, père et fille atteignent le haut de la Montagne. Mablark, dos fragile mais cœur vaillant, s\’élance avec ce qui ressemblerait presque à de l’assurance. À ses côtés, Olivarn glisse avec une agilité insolente, portée par le vent. Alors qu’elle dépasse son père, Olivarn lui lance :
@@ -1309,7 +1326,7 @@ Le vent siffle, les arbres défilent, la montagne tremble sous son élan.
     [[2-&gt;skyvall2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="tavern" tags="" position="350,2400" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $gamechapter = &quot;Mablark et la Matrice des Gafam&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;img src=&quot;img/tavern.jpeg&quot;&gt;
 Dans une taverne enfumée, Mablark le Glabre sirote une tisane médicinale (dos fragile oblige) en bougonnant parce qu’il s’est mis à pleuvoir des trombes d’eau, empêchant notre valeureux aventurier de poursuivre sa quête.
@@ -1427,8 +1444,8 @@ Mablark renait de ses cendres et récupère tous ses PV, et le dos de ses 20ans.
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;metal]]
     [[2-&gt;marchand2]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="youtube" tags="" position="725,2225" size="100,100">&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
-&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="youtube" tags="" position="725,2225" size="100,100">&lt;&lt;nextDay&gt;&gt;
+&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;set $health += 2&gt;&gt;
 &lt;&lt;set $gold -= 25&gt;&gt;
 Mablark se bute devant d’innombrables tutoriels en tout genre pendant 2 jours, il en ressort affûté en artisanat comme jamais. À n’en point douter, il s’illustrera lorsqu’une tâche de bricolage se présentera à lui. Bien qu’il parte de relativement loin...
@@ -1462,7 +1479,7 @@ Mablark enfile un magnifique bracelet capfun et sent sa vigueur décupler..
     [[2-&gt;marchand2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="reveil" tags="" position="350,2825" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $gamechapter = &quot;Le réveil&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;img src=&quot;img/reveil.png&quot;&gt;
 Mablark  se réveille, flottant nu dans une cuve translucide, branché à des câbles bardés de logos douteux : Amazon, Meta, DisneyCorp.
@@ -1488,7 +1505,7 @@ On y retrouve Linus Torvaldson, chevauchant un pingouin géant, brandissant le m
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="47" name="final_boss" tags="" position="350,3075" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $gamechapter = &quot;Le boss final&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Leur mission ? Affronter l’Agent Zuckervampire, créature pâle qui aspire la donnée des mortels en levant son pouce vers le haut. Celui-ci ne tarde d’ailleurs pas à apparaître devant eux. Linus Torvaldson s’adresse alors à Mablark: “C’est ton combat. Nous avons foi en toi, tu peux le vaincre car tu es l’élu” Robertus n’ajoute rien mais procure à Mablark un bouclier au mystérieux sigle Ublock.
 &lt;img src=&quot;img/fight.png&quot;&gt;
@@ -1522,7 +1539,7 @@ les profils fantômes sont des sbires avec peu de PV mais qui infligent des dég
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="49" name="end" tags="" position="350,3325" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $gamechapter = &quot;La fin?&quot;&gt;&gt;
-	&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+	&lt;&lt;nextDay&gt;&gt;
 	&lt;&lt;set $charisma += 15&gt;&gt;
 	&lt;&lt;set $mood += 10&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
