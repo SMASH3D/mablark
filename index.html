@@ -651,7 +651,7 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
     font-size: large;
 }
 img {
-  border-radius: 5px;
+  border-radius: 6px;
   max-width: 750px;
   height: auto;
 }
@@ -666,7 +666,7 @@ img {
     display: none;
   }
   img {
-    max-width: 350px;
+    max-width: 300px;
     width: auto;
   }
   #hud {
@@ -1082,7 +1082,7 @@ Mais dans l’ombre, une malédiction rôde encore… un sortilège perfide conn
 &lt;img src=&quot;img/chariot.png&quot;&gt;
 À peine a-t-il tourné le gouvernail de direction que l’acier géant grince, ploie, racle contre les murailles invisibles de la destinée. Quand le silence retombe, il reste une cicatrice monumentale sur la carrosserie sacrée.
 
-Le chariot est brisé… et la guilde des Loueurs Usuriers réclame 2500 pièces d’or en réparation. Une somme capable d’acheter trois haches à deux mains +2 ou un séjour no limit au Hellfest.
+Le chariot est brisé… et la guilde des Loueurs Usuriers réclame 25 pièces d’or en réparation. Une somme capable d’acheter une hache à deux mains +2 ou un séjour no limit au Hellfest.
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Tenter une réparation artisanale à la rustine et au scotch sacré.&lt;/div&gt;&#39; &#39;chariot1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1120,7 +1120,7 @@ Olivarn est sacrée Vent de Givre tandis que Mablark hérite du titre peu glorie
 
 &gt;18 Réussite → Le chariot brille d’une aura approximative, la guilde est dupe.
 
-=&lt;18 Échec → Ça ressemble à une œuvre d’art contemporain, +250 pièces d’or de pénalité.
+=&lt;18 Échec → Ça ressemble à une œuvre d’art contemporain, +25 pièces d’or de pénalité.
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1139,10 +1139,10 @@ Ces raqueteurs de loueurs fuient en pleurant, au diable leur caution !
 — &lt;span class=&quot;good-news&quot;&gt;Moral +1&lt;/span&gt;
 &lt;&lt;elseif _jet &lt;= 15&gt;&gt;
     &lt;&lt;set $health -= 3&gt;&gt;
-    &lt;&lt;set $gold -= 3000&gt;&gt;
-Le héros se bloque le dos en soulevant Anduril, -3 PV et toujours 2500 plus 500 de frais de dossiers pour avoir pris les usuriers pour des jambons. « Il se croyait où avec son gourdinnet lui? » 
+    &lt;&lt;set $gold -= 30&gt;&gt;
+Le héros se bloque le dos en soulevant Anduril, -3 PV et toujours 25 plus 5 de frais de dossiers pour avoir pris les usuriers pour des jambons. « Il se croyait où avec son gourdinnet lui? » 
 — &lt;span class=&quot;bad-news&quot;&gt;PV -3&lt;/span&gt;.
-— &lt;span class=&quot;bad-news&quot;&gt;gold -3000&lt;/span&gt;.
+— &lt;span class=&quot;bad-news&quot;&gt;gold -30&lt;/span&gt;.
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1152,11 +1152,11 @@ Le héros se bloque le dos en soulevant Anduril, -3 PV et toujours 2500 plus 500
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;marchand]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="27" name="chariot3" tags="" position="525,1675" size="100,100">&lt;&lt;set $charisma -= 1&gt;&gt;
-&lt;&lt;set $gold -= 2500&gt;&gt;
+&lt;&lt;set $gold -= 25&gt;&gt;
 
 Mablark s’acquitte de sa dette.
 — &lt;span class=&quot;bad-news&quot;&gt;Charisme -1&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -2500&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -25&lt;/span&gt;
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1232,13 +1232,13 @@ Le marchand propose les objets suivants:
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;500PO Pichet de cervoise =&gt; +3PV -1 sagesse.&lt;/div&gt;&#39; &#39;cervoise&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;500PO Fiole de breuvage anisé =&gt; +2 charisme&lt;/div&gt;&#39; &#39;pastis&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;1000PO Tisane au miel, gingembre et tea tree =&gt; +2PV, -1charisme&lt;/div&gt;&#39; &#39;tisane&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;1500PO: L’abricot de renaissance =&gt; Recharge tous les PVs manquants, tel un phoenix&lt;/div&gt;&#39; &#39;phoenix&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;1500PO: L’abricot de renaissance =&gt; Recharge tous les PVs manquants, tel un phoenix&lt;/div&gt;&#39; &#39;phoenix&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;2500PO Compilation de Tutos bricolage youTube brodés sur des peaux de bêtes =&gt; +15 en artisanat&lt;/div&gt;&#39; &#39;youtube&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;2500PO Un bracelet de force +5&lt;/div&gt;&#39; &#39;bracelet&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;5PO Pichet de cervoise =&gt; +3PV -1 sagesse.&lt;/div&gt;&#39; &#39;cervoise&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;5PO Fiole de breuvage anisé =&gt; +2 charisme&lt;/div&gt;&#39; &#39;pastis&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;10PO Tisane au miel, gingembre et tea tree =&gt; +2PV, -1charisme&lt;/div&gt;&#39; &#39;tisane&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;15PO: L’abricot de renaissance =&gt; Recharge tous les PVs manquants, tel un phoenix&lt;/div&gt;&#39; &#39;phoenix&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;15PO: L’abricot de renaissance =&gt; Recharge tous les PVs manquants, tel un phoenix&lt;/div&gt;&#39; &#39;phoenix&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;25PO Compilation de Tutos bricolage youTube brodés sur des peaux de bêtes =&gt; +15 en artisanat&lt;/div&gt;&#39; &#39;youtube&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;25PO Un bracelet de force +5&lt;/div&gt;&#39; &#39;bracelet&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Passer son chemin.&lt;/div&gt;&#39; &#39;bracelet&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
@@ -1314,12 +1314,12 @@ De sa manche usée, il sort deux étranges talismans :
     [[1-&gt;reveil]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="cervoise" tags="" position="725,1700" size="100,100">&lt;&lt;set $wisdom -= 1&gt;&gt;
 &lt;&lt;set $health += 3&gt;&gt;
-&lt;&lt;set $gold -= 500&gt;&gt;
+&lt;&lt;set $gold -= 5&gt;&gt;
 Mablark s’enquille goulûment le pichet. Rien de tel pour se requinquer.
 
 — &lt;span class=&quot;good-news&quot;&gt;PV +3&lt;/span&gt;
 — &lt;span class=&quot;bad-news&quot;&gt;Sagesse -1&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -500&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -5&lt;/span&gt;
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1331,12 +1331,12 @@ Mablark s’enquille goulûment le pichet. Rien de tel pour se requinquer.
     [[1-&gt;metal]]
     [[2-&gt;marchand2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="pastis" tags="" position="725,1825" size="100,100">&lt;&lt;set $charisma += 2&gt;&gt;
-&lt;&lt;set $gold -= 500&gt;&gt;
+&lt;&lt;set $gold -= 5&gt;&gt;
 
 Mablark se régale d’un petit ballon de jaune et sent son aura gagner en intensité.
 
 — &lt;span class=&quot;good-news&quot;&gt;Charisme +2&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -500&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -5&lt;/span&gt;
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1349,12 +1349,12 @@ Mablark se régale d’un petit ballon de jaune et sent son aura gagner en inten
     [[2-&gt;marchand2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="tisane" tags="" position="725,1975" size="100,100">&lt;&lt;set $charisma -= 1&gt;&gt;
 &lt;&lt;set $health += 2&gt;&gt;
-&lt;&lt;set $gold -= 1000&gt;&gt;
+&lt;&lt;set $gold -= 10&gt;&gt;
 Mablark boit fièrement son breuvage chaud, au diable les mauvaises langues, après tout, il l’a lu dans un livre de développement personnel, le tea tree c’est très bon pour la santé, c’est naturel et une goutte suffit à guérir bien des maux, gna gna gna.
 
 — &lt;span class=&quot;good-news&quot;&gt;PV +2&lt;/span&gt;
 — &lt;span class=&quot;bad-news&quot;&gt;Charisme -1&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -1000&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -10&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Repartir à l’aventure.&lt;/div&gt;&#39; &#39;metal&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1366,12 +1366,12 @@ Mablark boit fièrement son breuvage chaud, au diable les mauvaises langues, apr
     [[2-&gt;marchand2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="phoenix" tags="" position="725,2100" size="100,100">&lt;&lt;set $charisma += 1&gt;&gt;
 &lt;&lt;set $health = 12&gt;&gt;
-&lt;&lt;set $gold -= 1500&gt;&gt;
+&lt;&lt;set $gold -= 15&gt;&gt;
 Ainsi la légende était vraie ! Un abricôt bien placé peut ramener à la vie les combattants en route pour le Valhalla, avec un boost temporaire d’aura.
 Mablark renait de ses cendres et récupère tous ses PV, et le dos de ses 20ans.
 — &lt;span class=&quot;good-news&quot;&gt;PV 12/12&lt;/span&gt;
 — &lt;span class=&quot;good-news&quot;&gt;Charisme +1&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -1000&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -15&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Repartir à l’aventure.&lt;/div&gt;&#39; &#39;metal&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1384,11 +1384,11 @@ Mablark renait de ses cendres et récupère tous ses PV, et le dos de ses 20ans.
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="youtube" tags="" position="725,2225" size="100,100">&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
 &lt;&lt;set $health += 2&gt;&gt;
-&lt;&lt;set $gold -= 2500&gt;&gt;
+&lt;&lt;set $gold -= 25&gt;&gt;
 Mablark se bute devant d’innombrables tutoriels en tout genre pendant 2 jours, il en ressort affûté en artisanat comme jamais. À n’en point douter, il s’illustrera lorsqu’une tâche de bricolage se présentera à lui. Bien qu’il parte de relativement loin...
 
 — &lt;span class=&quot;good-news&quot;&gt;Artisanat +15&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -2500&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -25&lt;/span&gt;
 — &lt;span class=&quot;bad-news&quot;&gt;Jours +2&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1400,11 +1400,11 @@ Mablark se bute devant d’innombrables tutoriels en tout genre pendant 2 jours,
     [[1-&gt;metal]]
     [[2-&gt;marchand2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="bracelet" tags="" position="725,2350" size="100,100">&lt;&lt;set $strenght += 5&gt;&gt;
-&lt;&lt;set $gold -= 2500&gt;&gt;
+&lt;&lt;set $gold -= 25&gt;&gt;
 Mablark enfile un magnifique bracelet capfun et sent sa vigueur décupler..
 
 — &lt;span class=&quot;good-news&quot;&gt;Force +5&lt;/span&gt;
-— &lt;span class=&quot;bad-news&quot;&gt;Gold -2500&lt;/span&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Gold -25&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Repartir à l’aventure.&lt;/div&gt;&#39; &#39;metal&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1421,7 +1421,7 @@ Mablark  se réveille, flottant nu dans une cuve translucide, branché à des c�
 Une étrange pieuvre rappelant Ghostface Chillah lui murmure : « Vous avez accepté les cookies. »
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;tavern2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;reveil2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
