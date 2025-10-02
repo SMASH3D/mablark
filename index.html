@@ -666,6 +666,9 @@ img {
   .hud-large {
     display: none;
   }
+  .hud-val {
+	margin-right: 0;
+  }
   img {
     max-width: 300px;
     width: auto;
@@ -788,6 +791,13 @@ window.skipDays = function(vars, n) {
     window.nextDay(vars);
   }
 };
+window.flashStat = function (statName) {
+  const el = document.querySelector(`#hud .${statName}`);
+  if (el) {
+    el.classList.add(&quot;flash&quot;);
+    setTimeout(() =&gt; el.classList.remove(&quot;flash&quot;), 3000);
+  }
+};
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="PassageHeader" tags="" position="1225,0" size="100,100">&lt;!-- a little script to boop longer passages back up to the top when going to new pages --&gt;
     &lt;script&gt;var myDiv = document.getElementById(&#39;passages&#39;);
     myDiv.scrollTop = 0;&lt;/script&gt;</tw-passagedata><tw-passagedata pid="5" name="menu-flex" tags="nobr" position="1100,125" size="100,100">&lt;&lt;link &#39;&lt;div class=&quot;menu-item&quot;&gt;&lt;b&gt;00&lt;/b&gt; go back&lt;/div&gt;&#39;&gt;&gt;&lt;&lt;run Engine.backward()&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -815,14 +825,13 @@ window.skipDays = function(vars, n) {
 &lt;span class=&#39;hud-icon&#39;&gt;💰&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Gold:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$gold&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;❤️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;HP:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$health&lt;/span&gt;
 &lt;&lt;if $happiness &lt; 5&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😞&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
-&lt;&lt;elseif $happiness &lt; 10&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😬&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
+&lt;&lt;elseif $happiness &lt; 12&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😬&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;elseif $happiness &lt; 20&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙂&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
-&lt;&lt;elseif $happiness &lt; 30&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😊&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;else&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😎&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;/if&gt;&gt; 
-&lt;span class=&#39;hud-icon&#39;&gt;💪🏼 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$strength&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🛠️ &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$craftmanship&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;💪🏼&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$strength&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🛠️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$craftmanship&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
@@ -851,6 +860,7 @@ Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de
     [[Continuer-&gt;boulier_infaillible]]
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="13" name="boulier_infaillible" tags="" position="350,350" size="100,100">&lt;&lt;set $gamechapter = &quot;Le boulier infaillible&quot;&gt;&gt;
+&lt;&lt;run window.nextDay(State.variables)&gt;&gt;
 C’est la fin de la grande récolte des baies de Mathematicus pour le village et malheur! Le compte n’y est pas.
 Le boulier sacré, témoin impartial des chiffres, grince et cliquette : il n’y a que 90 baies, bien loin des 140 proclamées avec aplomb par Mannagh la Patiente, fille aînée de Mablark le Glabre.
 &lt;img src=&quot;img/boulier.png&quot;&gt;
@@ -1266,15 +1276,15 @@ Le vent siffle, les arbres défilent, la montagne tremble sous son élan.
     [[2-&gt;skyvall2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="tavern" tags="" position="350,2400" size="100,100">&lt;&lt;set $gamechapter = &quot;Mablark et la Matrice des Gafam&quot;&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
-&lt;img src=&quot;img/tavern.png&quot;&gt;
+&lt;img src=&quot;img/tavern.jpeg&quot;&gt;
 Dans une taverne enfumée, Mablark le Glabre sirote une tisane médicinale (dos fragile oblige) en bougonnant parce qu’il s’est mis à pleuvoir des trombes d’eau, empêchant notre valeureux aventurier de poursuivre sa quête.
 Soudain, un mystérieux vieillard encapuchonné s’approche : Morbagh le Barbu.
 
 — « La vérité est là, Mablark. Tu vis prisonnier dans… la Matrice des Gafam. »
 De sa manche usée, il sort deux étranges talismans :
 
-* Une &lt;span style=&quot;color:red;&quot;&gt;baie écarlate de Mathematicus (rouge)&lt;/span&gt; : promesse de liberté.
-* Une &lt;span style=&quot;color:blue;&quot;&gt;dragée bleue de Microsoftus* (bleue)&lt;/span&gt; : promesse de sécurité… et de mises à jour forcées.
+* Une &lt;span style=&quot;color:red;&quot;&gt;baie écarlate de copyleft&lt;/span&gt; : promesse de liberté.
+* Une &lt;span style=&quot;color:blue;&quot;&gt;dragée bleue de Microsoftus&lt;/span&gt; : promesse de sécurité… et de mises à jour forcées.
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Choisir &lt;span style=&quot;color:red;&quot;&gt;la baie écarlate&lt;/span&gt;.&lt;/div&gt;&#39; &#39;tavern2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1305,7 +1315,7 @@ De sa manche usée, il sort deux étranges talismans :
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;tavern1]]
     [[2-&gt;tavern2]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="tavern2" tags="" position="175,2675" size="100,100">Mablark avale la baie rouge. Aussitôt, les murs de la taverne se fissurent : les poutres deviennent des lignes de code, les murs se recouvrent de fils Instagram et de trends TikTok.
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="tavern2" tags="" position="175,2675" size="100,100">Mablark avale la baie rouge. Aussitôt, le monde se fissure : les murs de la taverne deviennent des écrans remplis de lignes de code, les serveurs des processeurs, et le tavernier un captcha ambulant.
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;reveil&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
