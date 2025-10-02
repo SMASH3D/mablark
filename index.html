@@ -825,7 +825,7 @@ window.skipDays = function(vars, n) {
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
 
-&lt;img src=&quot;img/mablark-depart.png&quot; style=&quot;max-width: 800px;&quot;&gt;
+&lt;img src=&quot;img/mablark-depart.png&quot;&gt;
 
 Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts lugubres où rôdent les échos des tambours du chaos. La tribu, rassemblée pour le voir partir, ricane à demi-mots : certains parient qu’il reviendra avant la nuit, d’autres qu’il se perdra avant même d’avoir franchi la rivière.
 &lt;&lt;nobr&gt;&gt;
@@ -1125,7 +1125,7 @@ Olivarn est sacrée Vent de Givre tandis que Mablark hérite du titre peu glorie
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;metal1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;marchand&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
@@ -1147,7 +1147,7 @@ Le héros se bloque le dos en soulevant Anduril, -3 PV et toujours 2500 plus 500
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;metal1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;marchand&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
@@ -1161,7 +1161,7 @@ Mablark s’acquitte de sa dette.
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;metal1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;marchand&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
@@ -1212,7 +1212,9 @@ Alors que Mablark quitte la grotte sombre, en titubant à cause de la quantité 
     [[1-&gt;marchand1]]
     [[2-&gt;marchand2]]
 &lt;/div&gt;
-    </tw-passagedata><tw-passagedata pid="32" name="marchand1" tags="" position="175,2000" size="100,100">Toutefois te voilà maudit par le marchand qui t’envoie un sort de réminiscence. Des boules lumineuses représentant les différents produits sur lesquels tu as eu le malheur de poser le regard apparaissent aléatoirement devant tes yeux, te faisant perdre 1 point d’agilité.
+    </tw-passagedata><tw-passagedata pid="32" name="marchand1" tags="" position="175,2000" size="100,100">Toutefois te voilà maudit par le marchand qui t’envoie un sort de réminiscence. Des boules lumineuses représentant les différents produits sur lesquels tu as eu le malheur de poser le regard apparaissent aléatoirement devant tes yeux, te faisant perdre 1 point de moral.
+&lt;&lt;set $mood -= 1&gt;&gt;
+— &lt;span class=&quot;bad-news&quot;&gt;Moral -1&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;metal&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1259,6 +1261,7 @@ Le vent siffle, les arbres défilent, la montagne tremble sous son élan.
     [[2-&gt;skyvall2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="tavern" tags="" position="350,2400" size="100,100">&lt;&lt;set $gamechapter = &quot;Mablark et la Matrice des Gafam&quot;&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;img src=&quot;img/tavern.png&quot;&gt;
 Dans une taverne enfumée, Mablark le Glabre sirote une tisane médicinale (dos fragile oblige) en bougonnant parce qu’il s’est mis à pleuvoir des trombes d’eau, empêchant notre valeureux aventurier de poursuivre sa quête.
 Soudain, un mystérieux vieillard encapuchonné s’approche : Morbagh le Barbu.
 
@@ -1409,6 +1412,7 @@ Mablark enfile un magnifique bracelet capfun et sent sa vigueur décupler..
     [[2-&gt;metal]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="reveil" tags="" position="350,2825" size="100,100">&lt;&lt;set $gamechapter = &quot;Le réveil&quot;&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
+&lt;img src=&quot;img/reveil.png&quot;&gt;
 Mablark  se réveille, flottant nu dans une cuve translucide, branché à des câbles bardés de logos douteux : Amazon, Meta, DisneyCorp.
 Une étrange pieuvre rappelant Ghostface Chillah lui murmure : « Vous avez accepté les cookies. »
 &lt;&lt;nobr&gt;&gt;
