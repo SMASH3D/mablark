@@ -637,16 +637,18 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
   padding: 0 3em;
   overflow-y: auto;
 }
-
 .no-show {
 	display:none;
 }
-
 .hud-large {
   display: inline;
   margin-left: 4px;
 }
-
+.hud-val {
+	margin-left: 1em;
+    float: right;
+}
+}
 .hud-icon {
     font-size: large;
 }
@@ -810,19 +812,19 @@ window.skipDays = function(vars, n) {
 &lt;&lt;set $gold = 50&gt;&gt;
 &lt;&lt;set $wisdom = 15&gt;&gt;
 &lt;&lt;set $dot_duration = 0&gt;&gt;
-&lt;&lt;set $dot_dps = 0&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="hud-text" tags="" position="700,125" size="100,100">&lt;span class=&#39;hud-icon&#39;&gt;🗓️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Day :&lt;/span&gt; $day
-&lt;span class=&#39;hud-icon&#39;&gt;💰&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Gold:&lt;/span&gt; $gold
-&lt;span class=&#39;hud-icon&#39;&gt;❤️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;HP:&lt;/span&gt; $health
-&lt;&lt;if $happiness &lt; 5&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😞&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;$happiness
-&lt;&lt;elseif $happiness &lt; 10&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😬&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;$happiness
-&lt;&lt;elseif $happiness &lt; 20&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙂&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;$happiness
-&lt;&lt;elseif $happiness &lt; 30&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😊&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;$happiness
-&lt;&lt;else&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😎&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;$happiness
+&lt;&lt;set $dot_dps = 0&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="hud-text" tags="" position="700,125" size="100,100">&lt;span class=&#39;hud-icon&#39;&gt;🗓️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Day :&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$day&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;💰&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Gold:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$gold&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;❤️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;HP:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$health&lt;/span&gt;
+&lt;&lt;if $happiness &lt; 5&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😞&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
+&lt;&lt;elseif $happiness &lt; 10&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😬&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
+&lt;&lt;elseif $happiness &lt; 20&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙂&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
+&lt;&lt;elseif $happiness &lt; 30&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😊&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
+&lt;&lt;else&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😎&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;/if&gt;&gt; 
-&lt;span class=&#39;hud-icon&#39;&gt;💪🏼 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;$strength
-&lt;span class=&#39;hud-icon&#39;&gt;🛠️ &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;$craftmanship
-&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;$charisma  
-&lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt; Sagesse: &lt;/span&gt;$wisdom  </tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;💪🏼 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$strength&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🛠️ &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$craftmanship&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽 &lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
 &lt;&lt;run window.nextDay(State.variables)&gt;&gt;
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
 
