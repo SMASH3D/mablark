@@ -495,92 +495,8 @@ than 750px
     font-display: swap;
 }
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">// for icons
-// importStyles('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-// to avoid including passages tagged 'noreturn' when returning to game
-$(document).on(':passagestart', function (ev) {
-    if (!ev.passage.tags.includes('noreturn')) {
-        State.variables.return = ev.passage.title;
-    }
-});
-
-Config.passages.descriptions = true;
-
-//autosaves 
-Config.saves.autosave = true;
-Config.saves.isAllowed = function () {
-	if (tags().includes('noreturn')) {
-		return false;
-	}
-	if (tags().includes('nosave')) {
-		return false;
-	}
-	return true;
-};
-
-Config.saves.onSave = function (save, details) {
-	switch (details.type) {
-	case 'autosave':
-		save.title = 'autosave';
-		break;
-	case 'disk':
-		// code to post-process the save object from disk saves
-		break;
-	case 'serialize':
-		// code to post-process the save object from serialize saves
-		break;
-	default: // slot
-		save.title = prompt('Enter Save Name:', save.title);
-		break;
-	}
-};
-
-// MENU TOGGLE
-
-$( ".menutoggle-btn" ).on( "click", function() {
-	$(".menutoggle").toggleClass("active");
-});</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
-&lt;img src=&quot;img/family.jpeg&quot;&gt;
-Bien que la nature ne l’ait guère avantagé pour un ork, il possèdait une splendide chevelure blonde.Cet attribut ainsi que son charisme légendaire lui permirent d’obtenir le titre de barde du clan et de séduire la belle et puissante Koralourk avec qui il eut deux filles: Mannagh et Olivarn, qui héritèrent de la blondeur de leur père et de la vaillance de leur mère.
-&lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;intro2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
-&lt;div class=&#39;no-show&#39;&gt;
-    [[Continuer-&gt;intro2]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="intro2" tags="" position="150,150" size="100,100">Un malencontreux coup du sort lui avait valu dans sa jeunesse de s’embrocher la paume de la main lors d’un duel épique avec une tranche de jambon, avec un coutelas d&#39;entraînement, tout juste bon à tartiner du foie gras... 
-Depuis ce jour, la tribu avait décrété qu’aucun objet tranchant — même vaguement — ne devait plus jamais approcher de ses mains. C’est ainsi qu’il dut renoncer aux épées flamboyantes et se contenter de son fidèle gourdin Anduril que les mauvaises langues qualifieront plus tard de gourdinet, mais qu’importe!
-
-Mais Mablark nourrissait un rêve : prouver sa valeur et gagner l’estime de ses pairs. Car selon la loi des steppes, celui qui accomplira un exploit guerrier pourra enfin prétendre à la reconnaissance et peut-être même renverser la mainmise des femelles autoritaires qui dirigent la tribu.
-
-Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de guerre éclatant, défier le destin, et surtout… être enfin pris au sérieux.
-&lt;&lt;nobr&gt;&gt;
-    &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;le_grand_depart&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-  &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;
-&lt;div class=&#39;no-show&#39;&gt;
-    [[Continuer-&gt;le_grand_depart]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInterface" tags="" position="700,250" size="100,100">&lt;div id=&quot;layout&quot;&gt;
-  &lt;!-- HUD colonne gauche --&gt;
-  &lt;aside id=&quot;hud&quot;&gt;
-    &lt;div id=&quot;hud-text&quot; data-passage=&quot;hud-text&quot;&gt;&lt;/div&gt;
-  &lt;/aside&gt;
-  &lt;!-- Contenu principal --&gt;
-  &lt;div id=&quot;main&quot;&gt;
-    &lt;div id=&quot;header&quot;&gt;
-      &lt;span id=&quot;header-text&quot; data-passage=&quot;header-text&quot;&gt;&lt;/span&gt;
-      &lt;div class=&quot;menutoggle&quot;&gt;
-        &lt;div class=&quot;menutoggle-btn&quot;&gt;&lt;span&gt;+&lt;/span&gt;&lt;/div&gt;
-        &lt;div id=&quot;menutoggle-items&quot;&gt;
-          &lt;div class=&quot;menu-flex&quot; data-passage=&quot;menu-flex&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div id=&quot;passages&quot;&gt;&lt;!-- passages ici --&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;style&gt;
+/* CUSTOM CSS */
 :root {
   --accent-green: rgba(42, 233, 85, 0.75);
 }
@@ -648,7 +564,7 @@ img {
   max-width: 750px;
   height: auto;
 }
-/* Sur mobile (écran &lt;= 600px de large) */
+/* Sur mobile (écran <= 600px de large) */
 @media screen and (max-width: 600px) {
   #header-text {
   	font-size: 14px;
@@ -691,55 +607,99 @@ img {
 .good-news {
 	color: green;
 }
-#hud .flash-pos {
+.hud-val.flash-pos {
   color: limegreen;
   font-weight: bold;
   transition: color 0.5s ease;
 }
-#hud .flash-neg {
+.hud-val.flash-neg {
   color: crimson;
   font-weight: bold;
   transition: color 0.5s ease;
-}
-&lt;/style&gt;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// for icons
+// importStyles('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-&lt;script type=&quot;text/javascript&quot;&gt;
+// to avoid including passages tagged 'noreturn' when returning to game
+$(document).on(':passagestart', function (ev) {
+    if (!ev.passage.tags.includes('noreturn')) {
+        State.variables.return = ev.passage.title;
+    }
+});
+
+Config.passages.descriptions = true;
+
+//autosaves 
+Config.saves.autosave = true;
+Config.saves.isAllowed = function () {
+	if (tags().includes('noreturn')) {
+		return false;
+	}
+	if (tags().includes('nosave')) {
+		return false;
+	}
+	return true;
+};
+
+Config.saves.onSave = function (save, details) {
+	switch (details.type) {
+	case 'autosave':
+		save.title = 'autosave';
+		break;
+	case 'disk':
+		// code to post-process the save object from disk saves
+		break;
+	case 'serialize':
+		// code to post-process the save object from serialize saves
+		break;
+	default: // slot
+		save.title = prompt('Enter Save Name:', save.title);
+		break;
+	}
+};
+
+// MENU TOGGLE
+
+$( ".menutoggle-btn" ).on( "click", function() {
+	$(".menutoggle").toggleClass("active");
+});
+
+// CUSTOM CODE SMASH
 
 // Gestion navigation clavier sur les choix Twine
-$(document).on(&quot;keydown&quot;, function (event) {
-    let $choices = $(&quot;.choices .choice-item&quot;);
+$(document).on("keydown", function (event) {
+    let $choices = $(".choices .choice-item");
     if ($choices.length === 0) return;
 
     // Vérifie si un élément est déjà sélectionné
-    let $current = $choices.filter(&quot;.selected&quot;);
+    let $current = $choices.filter(".selected");
     let index = $choices.index($current);
 
     switch (event.key) {
-        case &quot;ArrowDown&quot;:
+        case "ArrowDown":
             event.preventDefault();
-            if (index &lt; $choices.length - 1) {
-                $current.removeClass(&quot;selected&quot;);
-                $choices.eq(index + 1).addClass(&quot;selected&quot;);
+            if (index < $choices.length - 1) {
+                $current.removeClass("selected");
+                $choices.eq(index + 1).addClass("selected");
             } else {
                 // boucle au début
-                $current.removeClass(&quot;selected&quot;);
-                $choices.eq(0).addClass(&quot;selected&quot;);
+                $current.removeClass("selected");
+                $choices.eq(0).addClass("selected");
             }
             break;
 
-        case &quot;ArrowUp&quot;:
+        case "ArrowUp":
             event.preventDefault();
-            if (index &gt; 0) {
-                $current.removeClass(&quot;selected&quot;);
-                $choices.eq(index - 1).addClass(&quot;selected&quot;);
+            if (index > 0) {
+                $current.removeClass("selected");
+                $choices.eq(index - 1).addClass("selected");
             } else {
                 // boucle à la fin
-                $current.removeClass(&quot;selected&quot;);
-                $choices.eq($choices.length - 1).addClass(&quot;selected&quot;);
+                $current.removeClass("selected");
+                $choices.eq($choices.length - 1).addClass("selected");
             }
             break;
 
-        case &quot;Enter&quot;:
+        case "Enter":
             event.preventDefault();
             if ($current.length) {
                 $current.click(); // active le choix en surbrillance
@@ -748,9 +708,9 @@ $(document).on(&quot;keydown&quot;, function (event) {
 
         default:
             // raccourcis numériques (1-9)
-            if (event.key &gt;= &quot;1&quot; &amp;&amp; event.key &lt;= &quot;9&quot;) {
+            if (event.key >= "1" && event.key <= "9") {
                 let numIndex = parseInt(event.key, 10) - 1;
-                if ($choices.length &gt; numIndex) {
+                if ($choices.length > numIndex) {
                     $choices.eq(numIndex).click();
                 }
             }
@@ -758,57 +718,80 @@ $(document).on(&quot;keydown&quot;, function (event) {
 });
 
 // Quand un nouveau passage est affiché, on sélectionne automatiquement le premier choix
-$(document).on(&quot;:passagerender&quot;, function () {
-    let $choices = $(&quot;.choices .choice-item&quot;);
-    $choices.removeClass(&quot;selected&quot;);
+$(document).on(":passagerender", function () {
+    let $choices = $(".choices .choice-item");
+    $choices.removeClass("selected");
     if ($choices.length) {
-        $choices.eq(0).addClass(&quot;selected&quot;);
+        $choices.eq(0).addClass("selected");
     }
 });
-&lt;/script&gt;
-&lt;script&gt;
-// fonctions &quot;safe&quot; : n&#39;utilisent pas State au moment de leur définition
-// elles attendent qu&#39;on leur passe un objet vars (State.variables)
 
 window.nextDay = function(vars) {
   if (!vars) return;
   vars.day = (vars.day || 0) + 1;
 
-  if ((vars.dot_duration || 0) &gt; 0) {
+  if ((vars.dot_duration || 0) > 0) {
     vars.health = (vars.health || 0) - (vars.dot_dps || 0);
     vars.dot_duration = Math.max(0, vars.dot_duration - 1);
   }
-
-  console.log(&quot;nextDay: day=&quot;, vars.day, &quot;hp=&quot;, vars.health, &quot;dot_dur=&quot;, vars.dot_duration);
 };
 
 window.skipDays = function(vars, n) {
   n = parseInt(n, 10) || 1;
-  for (let i = 0; i &lt; n; i++) {
+  for (let i = 0; i < n; i++) {
     window.nextDay(vars);
   }
 };
-&lt;/script&gt;
-&lt;script&gt;
-window.flashStat = function (statName, delta) {
-  // Cherche le span correspondant à la stat
-  const hud = document.querySelector(&quot;#hud&quot;);
-  if (!hud) return;
+window.flashStat = function (statId, delta) {
+  const val = document.getElementById(statId);
+  if (!val) return;
 
-  // Exemple : &quot;Charisme:&quot; =&gt; le .hud-large contient le mot
-  const label = Array.from(hud.querySelectorAll(&quot;.hud-large&quot;))
-    .find(el =&gt; el.textContent.toLowerCase().includes(statName.toLowerCase()));
+  const cssClass = delta > 0 ? "flash-pos" : "flash-neg";
+  val.classList.add(cssClass);
+  console.log(cssClass);
 
-  if (label) {
-    const val = label.nextElementSibling; // le .hud-val juste après
-    if (val) {
-      const cssClass = delta &gt; 0 ? &quot;flash-pos&quot; : &quot;flash-neg&quot;;
-      val.classList.add(cssClass);
-      setTimeout(() =&gt; val.classList.remove(cssClass), 1200);
-    }
-  }
-};
-&lt;/script&gt;
+  // enlève l'effet après un court délai
+  //setTimeout(() => val.classList.remove(cssClass), 12000);
+};</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
+&lt;img src=&quot;img/family.jpeg&quot;&gt;
+Bien que la nature ne l’ait guère avantagé pour un ork, il possèdait une splendide chevelure blonde.Cet attribut ainsi que son charisme légendaire lui permirent d’obtenir le titre de barde du clan et de séduire la belle et puissante Koralourk avec qui il eut deux filles: Mannagh et Olivarn, qui héritèrent de la blondeur de leur père et de la vaillance de leur mère.
+&lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;intro2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;div class=&#39;no-show&#39;&gt;
+    [[Continuer-&gt;intro2]]
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="intro2" tags="" position="150,150" size="100,100">Un malencontreux coup du sort lui avait valu dans sa jeunesse de s’embrocher la paume de la main lors d’un duel épique avec une tranche de jambon, avec un coutelas d&#39;entraînement, tout juste bon à tartiner du foie gras... 
+Depuis ce jour, la tribu avait décrété qu’aucun objet tranchant — même vaguement — ne devait plus jamais approcher de ses mains. C’est ainsi qu’il dut renoncer aux épées flamboyantes et se contenter de son fidèle gourdin Anduril que les mauvaises langues qualifieront plus tard de gourdinet, mais qu’importe!
+
+Mais Mablark nourrissait un rêve : prouver sa valeur et gagner l’estime de ses pairs. Car selon la loi des steppes, celui qui accomplira un exploit guerrier pourra enfin prétendre à la reconnaissance et peut-être même renverser la mainmise des femelles autoritaires qui dirigent la tribu.
+
+Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de guerre éclatant, défier le destin, et surtout… être enfin pris au sérieux.
+&lt;&lt;nobr&gt;&gt;
+    &lt;div class=&quot;choices&quot;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;le_grand_depart&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+  &lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;
+&lt;div class=&#39;no-show&#39;&gt;
+    [[Continuer-&gt;le_grand_depart]]
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInterface" tags="" position="700,250" size="100,100">&lt;div id=&quot;layout&quot;&gt;
+  &lt;!-- HUD colonne gauche --&gt;
+  &lt;aside id=&quot;hud&quot;&gt;
+    &lt;div id=&quot;hud-text&quot; data-passage=&quot;hud-text&quot;&gt;&lt;/div&gt;
+  &lt;/aside&gt;
+  &lt;!-- Contenu principal --&gt;
+  &lt;div id=&quot;main&quot;&gt;
+    &lt;div id=&quot;header&quot;&gt;
+      &lt;span id=&quot;header-text&quot; data-passage=&quot;header-text&quot;&gt;&lt;/span&gt;
+      &lt;div class=&quot;menutoggle&quot;&gt;
+        &lt;div class=&quot;menutoggle-btn&quot;&gt;&lt;span&gt;+&lt;/span&gt;&lt;/div&gt;
+        &lt;div id=&quot;menutoggle-items&quot;&gt;
+          &lt;div class=&quot;menu-flex&quot; data-passage=&quot;menu-flex&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;passages&quot;&gt;&lt;!-- passages ici --&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="4" name="PassageHeader" tags="" position="1225,0" size="100,100">&lt;!-- a little script to boop longer passages back up to the top when going to new pages --&gt;
     &lt;script&gt;var myDiv = document.getElementById(&#39;passages&#39;);
     myDiv.scrollTop = 0;&lt;/script&gt;</tw-passagedata><tw-passagedata pid="5" name="menu-flex" tags="nobr" position="1100,125" size="100,100">&lt;&lt;link &#39;&lt;div class=&quot;menu-item&quot;&gt;&lt;b&gt;00&lt;/b&gt; go back&lt;/div&gt;&#39;&gt;&gt;&lt;&lt;run Engine.backward()&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -860,6 +843,7 @@ Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts 
     [[Continuer-&gt;le_grand_depart2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="le_grand_depart2" tags="" position="400,150" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $happiness = $happiness-2&gt;&gt;
+&lt;&lt;run window.flashStat(&quot;mood&quot;, -2)&gt;&gt;
 Ignorant les moqueries, Mablark ajuste son pagne, serre les dents, et jure devant Crom et les esprits ancestraux qu’il accomplira l’exploit qui fera taire les rires et forcera les anciens à courber l’échine. Ses pas s’enfoncent dans la poussière, son dos craque déjà, mais son cœur bat d’une ardeur nouvelle.
 &lt;&lt;/nobr&gt;&gt;
 Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de reconnaissance… et peut-être d’un baume miracle pour ses lombaires. Mais à peine avait-il franchi l’entrée du village que le destin le mettait déjà au défi.
