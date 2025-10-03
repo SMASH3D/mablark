@@ -612,6 +612,11 @@ img {
   font-weight: bold;
   animation: flashPos 1s ease;
 }
+.emphasis-gold {
+  color: gold;
+  font-weight: bold;
+  text-shadow: 0 0 5px orange;
+}
 
 .hud-val.flash-neg {
   color: crimson !important;
@@ -853,7 +858,12 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;/if&gt;&gt; 
 &lt;span class=&#39;hud-icon&#39;&gt;💪🏼&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;&lt;span id=&quot;strength&quot; class=&#39;hud-val&#39;&gt;$strength&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🛠️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;&lt;span id=&quot;craftmanship&quot; class=&#39;hud-val&#39;&gt;$craftmanship&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;&lt;span id=&quot;charisma&quot; class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
+&lt;&lt;nobr&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;
+&lt;&lt;if $charisma &gt; 15&gt;&gt;
+  &lt;span id=&quot;charisma&quot; class=&#39;hud-val emphasis-gold&#39;&gt;$charisma&lt;/span&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;span id=&quot;charisma&quot; class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🏹&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Dextérité: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$dexterity&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🛡️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Armure: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$armor&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;nobr&gt;&gt;
