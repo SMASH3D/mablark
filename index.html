@@ -561,7 +561,7 @@ than 750px
 }
 img {
   border-radius: 6px;
-  max-width: 750px;
+  max-width: 720px;
   height: auto;
 }
 /* Sur mobile (écran <= 600px de large) */
@@ -632,7 +632,36 @@ img {
 @keyframes flashNeg {
   0%   { color: crimson; }
   100% { color: inherit; }
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// for icons
+}
+
+/* Gradient rouge -> orange -> vert */
+.health-critical {
+  color: #ff1a1a; /* rouge vif */
+  font-weight: bold;
+  text-shadow: 0 0 5px #660000;
+}
+
+.health-low {
+  background: linear-gradient(to top, #ff4d4d, #ff9900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.health-mid {
+  background: linear-gradient(to top, #ffcc00, #66cc33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.health-high {
+  background: linear-gradient(to top, #33cc33, #00ff99);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">// for icons
 // importStyles('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 // to avoid including passages tagged 'noreturn' when returning to game
@@ -781,9 +810,7 @@ Macro.add("statmod", {
       State.variables[varName] += delta;
     }
   }
-});
-
-</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
+});</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
 &lt;img src=&quot;img/family.jpeg&quot;&gt;
 Bien que la nature ne l’ait guère avantagé pour un ork, il possèdait une splendide chevelure blonde.Cet attribut ainsi que son charisme légendaire lui permirent d’obtenir le titre de barde du clan et de séduire la belle et puissante Koralourk avec qui il eut deux filles: Mannagh et Olivarn, qui héritèrent de la blondeur de leur père et de la vaillance de leur mère.
 &lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
@@ -846,16 +873,30 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;set $gold = 50&gt;&gt;
 &lt;&lt;set $wisdom = 15&gt;&gt;
 &lt;&lt;set $dexterity = 10&gt;&gt;
-&lt;&lt;set $armor = 10&gt;&gt;
+&lt;&lt;set $armor = 0&gt;&gt;
 &lt;&lt;set $dot_duration = 0&gt;&gt;
-&lt;&lt;set $dot_dps = 0&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="hud-text" tags="" position="700,125" size="100,100">&lt;span class=&#39;hud-icon&#39;&gt;🗓️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Day :&lt;/span&gt;&lt;span class=&#39;hud-val&#39; id=&quot;day&quot;&gt;$day&lt;/span&gt;
+&lt;&lt;set $dot_dps = 0&gt;&gt;
+&lt;&lt;cacheaudio &quot;epiphany&quot; &quot;https://cdn.pixabay.com/audio/2022/03/24/audio_668ad29f0a.mp3&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="10" name="hud-text" tags="" position="700,125" size="100,100">&lt;span class=&#39;hud-icon&#39;&gt;🗓️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Day :&lt;/span&gt;&lt;span class=&#39;hud-val&#39; id=&quot;day&quot;&gt;$day&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;💰&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Gold:&lt;/span&gt;&lt;span class=&#39;hud-val&#39; id=&quot;gold&quot;&gt;$gold&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;❤️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;HP:&lt;/span&gt;&lt;span class=&#39;hud-val&#39; id=&quot;health&quot;&gt;$health&lt;/span&gt;
+&lt;&lt;nobr&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;❤️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;HP:&lt;/span&gt;
+&lt;&lt;if $health &lt;= 4&gt;&gt;
+  &lt;span id=&quot;health&quot; class=&#39;hud-val health-critical&#39;&gt;$health&lt;/span&gt;
+&lt;&lt;elseif $health &lt;= 8&gt;&gt;
+  &lt;span id=&quot;health&quot; class=&#39;hud-val health-low&#39;&gt;$health&lt;/span&gt;
+&lt;&lt;elseif $health &lt;= 12&gt;&gt;
+  &lt;span id=&quot;health&quot; class=&#39;hud-val health-mid&#39;&gt;$health&lt;/span&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;span id=&quot;health&quot; class=&#39;hud-val health-high&#39;&gt;$health&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $happiness &lt; 5&gt;&gt;&lt;spanclass=&#39;hud-icon&#39;&gt;😞&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span id=&quot;mood&quot; class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;elseif $happiness &lt; 12&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😬&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span id=&quot;mood&quot; class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;elseif $happiness &lt; 20&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙂&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span id=&quot;mood&quot; class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;else&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😎&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span id=&quot;mood&quot; class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
-&lt;&lt;/if&gt;&gt; 
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;💪🏼&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;&lt;span id=&quot;strength&quot; class=&#39;hud-val&#39;&gt;$strength&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🛠️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;&lt;span id=&quot;craftmanship&quot; class=&#39;hud-val&#39;&gt;$craftmanship&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;
@@ -1014,7 +1055,6 @@ C’est le Rhume Scélérat, ennemi juré des constitutions fragiles et des hypo
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Dé  &lt; 8.&lt;/div&gt;&#39; &#39;rhume3-effect2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
-&lt;&lt;/if&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[3-&gt;rhume3-effect1]]
     [[3-&gt;rhume3-effect2]]
@@ -1189,7 +1229,6 @@ Le marchand propose les objets suivants, les CGV stipulant que tout objet acquis
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;5PO Pichet de cervoise =&gt; +3PV -1 sagesse.&lt;/div&gt;&#39; &#39;cervoise&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;5PO Fiole de breuvage anisé =&gt; +2 charisme&lt;/div&gt;&#39; &#39;pastis&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;10PO Tisane au miel, gingembre et tea tree =&gt; +2PV, -1charisme&lt;/div&gt;&#39; &#39;tisane&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;15PO: L’abricot de renaissance =&gt; Recharge tous les PVs manquants, tel un phoenix&lt;/div&gt;&#39; &#39;phoenix&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;15PO: L’abricot de renaissance =&gt; Recharge tous les PVs manquants, tel un phoenix&lt;/div&gt;&#39; &#39;phoenix&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;25PO Compilation de Tutos bricolage youTube brodés sur des peaux de bêtes =&gt; +15 en artisanat&lt;/div&gt;&#39; &#39;youtube&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;25PO Un bracelet de force +5&lt;/div&gt;&#39; &#39;bracelet&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1426,6 +1465,7 @@ Les caractéristiques de Zuckervampire
 
 Tant que Zuckervampire est en vie, il invoque à la fin de chaque tour deux profils fantômes qui harcèlent le héros de demandes d’amis.
 Les profils fantômes sont des sbires avec peu de PV mais qui infligent des dégâts nécrotiques (pas très puissants avec leurs attaques demandes d’amis) et ils disparaissent lors de la mort de Zuckervampire
+&lt;img src=&quot;img/fight-instructions.jpeg&quot;&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Mablark meurt.&lt;/div&gt;&#39; &#39;loose&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1449,10 +1489,13 @@ Mablark se redresse, les bras levés :
 — « J’ai vaincu la Matrice ! Libre circulation des données pour tous ! »
 Mais soudain, Morbagh le Barbu réapparaît…
 — « Bravo, Mablark. Mais sache… qu’il reste les extensions Chrome. »
-&lt;img src=&quot;img/kubernepee.png&quot;&gt;
-Linus Torvaldson s’approche alors de notre héros et déclame d’un air solennel:
--” tu as fait preuve de bravoure Mablark. Je te fais chevalier de l’ordre du libre et te remet Kubernépée, la lame sacrée de la communauté du Libre. Va! De nombreux combats t’attendent!”
 
+&lt;&lt;if $charisma &gt; 16&gt;&gt;
+  &lt;img src=&quot;img/kubernepee.png&quot;&gt;
+  Linus Torvaldson s’approche alors de notre héros et déclame d’un air solennel:
+  -” tu as fait preuve de bravoure Mablark, ton charisme de &lt;&lt;=$charisma&gt;&gt; t’octroie la reconnaissance de tous. Je te fais chevalier de l’ordre du libre et te remet Kubernépée, la lame sacrée de la communauté du Libre. Va! De nombreux combats t’attendent!”
+&lt;&lt;audio &quot;epiphany&quot; fadein&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 — &lt;span class=&quot;good-news&quot;&gt;Charisme +15&lt;/span&gt;
 — &lt;span class=&quot;good-news&quot;&gt;Moral +10&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
@@ -1464,7 +1507,7 @@ Linus Torvaldson s’approche alors de notre héros et déclame d’un air solen
     [[1-&gt;end2]]
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="48" name="end2" tags="" position="350,3625" size="100,100">Mablark comprend que la guerre ne fait que commencer…
-
+&lt;img src=&quot;img/get-out.png&quot;&gt;
 A cet instant, le tavernier secoue l’épaule de Mablark “on va fermer mon bonhomme, soit tu prends une chambre, soit c’est la porte!” Vaseux, Mablark quitte le bouge. Ebloui par la lumière du soleil qui se réverbère dans les flaques d’eau, Mablark le Glabre vascille. En heurtant le mur, au lieu du bruit sourd du bois de son gourdin contre la pierre, il entend un tintement métallique. Alors tout cela n’était pas un rêve?</tw-passagedata><tw-passagedata pid="49" name="canard" tags="" position="675,1950" size="100,100">&lt;&lt;nobr&gt;&gt;
 	&lt;&lt;set $health += 5&gt;&gt;
 	&lt;&lt;set $charisma -= 1&gt;&gt;
