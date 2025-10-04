@@ -561,8 +561,16 @@ than 750px
 }
 img {
   border-radius: 6px;
-  max-width: 720px;
+  max-width: 420px;
   height: auto;
+}
+img.landscape {
+  max-width: 700px;
+  height: auto;
+}
+.img-holder {
+  display: flex;
+  justify-content: center;
 }
 /* Sur mobile (écran <= 600px de large) */
 @media screen and (max-width: 600px) {
@@ -751,6 +759,13 @@ $(document).on("keydown", function (event) {
             }
             break;
 
+        case "Backspace":
+            event.preventDefault();
+            if ($current.length) {
+                $current.click(); // active le choix en surbrillance
+            }
+            break;
+
         default:
             // raccourcis numériques (1-9)
             if (event.key >= "1" && event.key <= "9") {
@@ -811,7 +826,7 @@ Macro.add("statmod", {
     }
   }
 });</script><tw-passagedata pid="1" name="home" tags="" position="25,150" size="100,100">Nul ne naît égal sous l’œil de Crom. Certains héritent de muscles saillants, de poitrines velues ou de regards farouches. Mablark, jeune ork de la tribu des Blarielles, hérita d’une pilosité timide et d’une constitution hasardeuse, lui conférant une tendance à l’hypochondrie. Ce défaut le rendait peu performant dans les combats, la moindre blessure infligée à un proche se répercutant immédiatement sur sa vitalité.
-&lt;img src=&quot;img/family.jpeg&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/family.jpeg&quot;&gt;&lt;/div&gt;
 Bien que la nature ne l’ait guère avantagé pour un ork, il possèdait une splendide chevelure blonde.Cet attribut ainsi que son charisme légendaire lui permirent d’obtenir le titre de barde du clan et de séduire la belle et puissante Koralourk avec qui il eut deux filles: Mannagh et Olivarn, qui héritèrent de la blondeur de leur père et de la vaillance de leur mère.
 &lt;&lt;nobr&gt;&gt;&lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Continuer.&lt;/div&gt;&#39; &#39;intro2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -873,7 +888,6 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;set $gold = 50&gt;&gt;
 &lt;&lt;set $wisdom = 15&gt;&gt;
 &lt;&lt;set $dexterity = 10&gt;&gt;
-&lt;&lt;set $armor = 0&gt;&gt;
 &lt;&lt;set $dot_duration = 0&gt;&gt;
 &lt;&lt;set $dot_dps = 0&gt;&gt;
 &lt;&lt;cacheaudio &quot;epiphany&quot; &quot;https://cdn.pixabay.com/audio/2022/03/24/audio_668ad29f0a.mp3&quot;&gt;&gt;
@@ -906,13 +920,12 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
   &lt;span id=&quot;charisma&quot; class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🏹&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Dextérité: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$dexterity&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🛡️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Armure: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$armor&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🏹&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Dextérité: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$dexterity&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
 &lt;&lt;nextDay&gt;&gt;
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
 &lt;&lt;/nobr&gt;&gt;
-&lt;img src=&quot;img/depart.jpeg&quot; style=&quot;max-width=500;&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/depart.jpeg&quot;&gt;&lt;/div&gt;
 Devant lui s’étend la vaste plaine, avec ses collines chauves et ses forêts lugubres où rôdent les échos des tambours du chaos. La tribu, rassemblée pour le voir partir, ricane à demi-mots : certains parient qu’il reviendra avant la nuit, d’autres qu’il se perdra avant même d’avoir franchi la rivière.
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -941,7 +954,7 @@ Ainsi commence la marche solitaire de Mablark le Glabre, en quête de gloire, de
 C’est la fin de la grande récolte des baies de Mathematicus pour le village et malheur! Le compte n’y est pas.
 &lt;&lt;/nobr&gt;&gt;
 Le boulier sacré, témoin impartial des chiffres, grince et cliquette : il n’y a que 90 baies, bien loin des 140 proclamées avec aplomb par Mannagh la Patiente, fille aînée de Mablark le Glabre.
-&lt;img src=&quot;img/boulier.png&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/boulier.png&quot;&gt;&lt;/div&gt;
 Mannagh, l’œil brillant et la voix assurée, accuse aussitôt l’artefact lui-même :
 « Ce boulier est défectueux ! »
 Un silence lourd s’abat. Mettre en doute l’intégrité du Boulier est un blasphème pire que d’installer Windows sur un autel sacré.
@@ -1058,7 +1071,7 @@ C’est le Rhume Scélérat, ennemi juré des constitutions fragiles et des hypo
 &lt;div class=&#39;no-show&#39;&gt;
     [[3-&gt;rhume3-effect1]]
     [[3-&gt;rhume3-effect2]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="skyvall" tags="" position="675,1200" size="100,100">&lt;img src=&quot;img/skyvall.jpeg&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="skyvall" tags="" position="675,1200" size="100,100">&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/skyvall.jpeg&quot; class=&quot;landscape&quot;&gt;&lt;/div&gt;
 Après cet épisode viral, Koralourk impose à Mablark une cure thermale dans les montagnes de Skiväll pour reprendre des points de vitalité. Le clan des Blarielles, loue un chariot de fer blanc à la guilde des Loueurs Usuriers et prend la direction des alpages.
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1090,7 +1103,7 @@ Après un long périple héroïque, bravant les éléments dans les monts de Ski
 &lt;&lt;/nobr&gt;&gt;
 Confiant, presque trop, Mablark entreprend la dernière épreuve : le garer devant sa demeure pour décharger l’arsenal de voyage de sa compagne et ses deux filles, les prises de leur dernière chasse et les 5 kg de fromage de Montagne qui l’avaient fait saliver durant tout le voyage.
 Mais dans l’ombre, une malédiction rôde encore… un sortilège perfide connu sous le nom de Manœuvre de Fin de Quête.
-&lt;img src=&quot;img/chariot2.png&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/chariot2.png&quot;&gt;&lt;/span&gt;
 À peine a-t-il tourné le gouvernail de direction que l’acier géant grince, ploie, racle contre les murailles invisibles de la destinée. Quand le silence retombe, il reste une cicatrice monumentale sur la carrosserie sacrée.
 
 Le chariot est brisé… et la guilde des Loueurs Usuriers réclame 25 pièces d’or en réparation. Une somme capable d’acheter une hache à deux mains +2 ou un séjour no limit au Hellfest.
@@ -1262,7 +1275,7 @@ Le vent siffle, les arbres défilent, la montagne tremble sous son élan.
 	&lt;&lt;set $gamechapter = &quot;Mablark et la Matrice des Gafam&quot;&gt;&gt;
 	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-&lt;img src=&quot;img/tavern.jpeg&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/tavern.jpeg&quot;&gt;&lt;/span&gt;
 Dans une taverne enfumée, Mablark le Glabre sirote une tisane médicinale (dos fragile oblige) en bougonnant parce qu’il s’est mis à pleuvoir des trombes d’eau, empêchant notre valeureux aventurier de poursuivre sa quête.
 Soudain, un mystérieux vieillard encapuchonné s’approche : Morbagh le Barbu.
 
@@ -1415,7 +1428,7 @@ Mablark enfile un magnifique bracelet capfun et sent sa vigueur décupler..
 	&lt;&lt;set $gamechapter = &quot;Le réveil&quot;&gt;&gt;
 	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-&lt;img src=&quot;img/reveil.png&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/reveil.png&quot;&gt;&lt;/span&gt;
 Mablark  se réveille, flottant nu dans une cuve translucide, branché à des câbles bardés de logos douteux : Amazon, Meta, DisneyCorp.
 Une étrange pieuvre rappelant Ghostface Chillah lui murmure : « Vous avez accepté les cookies. »
 &lt;&lt;nobr&gt;&gt;
@@ -1442,7 +1455,7 @@ On y retrouve Linus Torvaldson, chevauchant un pingouin géant, brandissant le m
 	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Leur mission ? Affronter l’Agent Zuckervampire, créature pâle qui aspire la donnée des mortels en levant son pouce vers le haut. Celui-ci ne tarde d’ailleurs pas à apparaître devant eux. Linus Torvaldson s’adresse alors à Mablark: “C’est ton combat. Nous avons foi en toi, tu peux le vaincre car tu es l’élu” Robertus n’ajoute rien mais procure à Mablark un bouclier au mystérieux sigle Ublock.
-&lt;img src=&quot;img/fight.png&quot;&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/fight.png&quot;&gt;&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Aller au charbon.&lt;/div&gt;&#39; &#39;fight&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1491,7 +1504,7 @@ Mais soudain, Morbagh le Barbu réapparaît…
 — « Bravo, Mablark. Mais sache… qu’il reste les extensions Chrome. »
 
 &lt;&lt;if $charisma &gt; 16&gt;&gt;
-  &lt;img src=&quot;img/kubernepee.png&quot;&gt;
+  &lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/kubernepee.png&quot;&gt;&lt;/span&gt;
   Linus Torvaldson s’approche alors de notre héros et déclame d’un air solennel:
   -” tu as fait preuve de bravoure Mablark, ton charisme de &lt;&lt;=$charisma&gt;&gt; t’octroie la reconnaissance de tous. Je te fais chevalier de l’ordre du libre et te remet Kubernépée, la lame sacrée de la communauté du Libre. Va! De nombreux combats t’attendent!”
 &lt;&lt;audio &quot;epiphany&quot; fadein&gt;&gt;
