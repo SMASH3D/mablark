@@ -899,12 +899,12 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;set $craftmanship = 1&gt;&gt;
 &lt;&lt;set $gold = 50&gt;&gt;
 &lt;&lt;set $wisdom = 15&gt;&gt;
-&lt;&lt;set $dexterity = 10&gt;&gt;
 &lt;&lt;set $dot_duration = 0&gt;&gt;
 &lt;&lt;set $dot_dps = 0&gt;&gt;
 &lt;&lt;cacheaudio &quot;epiphany&quot; &quot;https://cdn.pixabay.com/audio/2022/03/24/audio_668ad29f0a.mp3&quot;&gt;&gt;
 </tw-passagedata><tw-passagedata pid="10" name="hud-text" tags="" position="700,125" size="100,100">&lt;span class=&#39;hud-icon&#39;&gt;🗓️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Day :&lt;/span&gt;&lt;span class=&#39;hud-val&#39; id=&quot;day&quot;&gt;$day&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;💰&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Gold:&lt;/span&gt;&lt;span class=&#39;hud-val&#39; id=&quot;gold&quot;&gt;$gold&lt;/span&gt;
+
 &lt;&lt;nobr&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;❤️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;HP:&lt;/span&gt;
 &lt;&lt;if $health &lt;= 4&gt;&gt;
   &lt;span id=&quot;health&quot; class=&#39;hud-val health-critical&#39;&gt;$health&lt;/span&gt;
@@ -923,6 +923,7 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;else&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;😎&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Mood:&lt;/span&gt;&lt;span id=&quot;mood&quot; class=&#39;hud-val&#39;&gt;$happiness&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
+
 &lt;span class=&#39;hud-icon&#39;&gt;💪🏼&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Strength:  &lt;/span&gt;&lt;span id=&quot;strength&quot; class=&#39;hud-val&#39;&gt;$strength&lt;/span&gt;
 &lt;span class=&#39;hud-icon&#39;&gt;🛠️&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Craft: &lt;/span&gt;&lt;span id=&quot;craftmanship&quot; class=&#39;hud-val&#39;&gt;$craftmanship&lt;/span&gt;
 &lt;&lt;nobr&gt;&gt;&lt;span class=&#39;hud-icon&#39;&gt;🙌🏽&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Charisme: &lt;/span&gt;
@@ -931,8 +932,7 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;else&gt;&gt;
   &lt;span id=&quot;charisma&quot; class=&#39;hud-val&#39;&gt;$charisma&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;
-&lt;span class=&#39;hud-icon&#39;&gt;🏹&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Dextérité: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$dexterity&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;span class=&#39;hud-icon&#39;&gt;🧠&lt;/span&gt;&lt;span class=&#39;hud-large&#39;&gt;Sagesse: &lt;/span&gt;&lt;span id=&quot;wisdom&quot; class=&#39;hud-val&#39;&gt;$wisdom&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="le_grand_depart" tags="" position="275,150" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $gamechapter = &quot;Le grand départ&quot;&gt;&gt;
 &lt;&lt;nextDay&gt;&gt;
 Un matin blafard, alors que le vent des steppes fouette les yourtes et agite les colliers d’os ornant le campement, Mablark se lève, le regard embrumé mais empli d’une lueur de détermination. Son gourdinet bringuebale à sa ceinture, trop léger pour faire peur, mais assez lourd pour lui cogner les burnes à chaque pas.
@@ -1821,7 +1821,7 @@ Le mystère est levé… mais avec une récolte détruite et une doyenne carboni
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="70" name="Untitled Passage" tags="" position="150,0" size="100,100">&lt;&lt;set $gamechapter = &quot;Avant propos&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="70" name="avant-propos" tags="" position="150,0" size="100,100">&lt;&lt;set $gamechapter = &quot;Avant propos&quot;&gt;&gt;
 Chaque œuvre de fiction comporte sa part de vérité et toute légende digne de ce nom mérite d’être un jour contée. Pour toutes les fois où tu nous as tenu en haleine dans tes récits extraordinaires, pour toutes les fois où tu as transformé la plus banale de tes journées en incroyable épopée, pour toutes les fois où ton éloquence et ton art de l’interprétation dramatique ont marqué nos esprits, à tel point que tu supplantes bien souvent l’oeuvre originale, à notre tour de te narrer une aventure: la tienne. Nous avons sélectionné avec soin des moments clefs de tes 40 années d’existence pour en faire ce jeu dont tu es le héros. Sauras-tu venir à bout de la quête de la reconnaissance? Pour le savoir, arme-toi de tes plus beaux dés, d’une feuille et d’un stylo et laisse-toi porter par notre narration. Que Crom soit avec toi! 
 
 Tes potes
