@@ -518,7 +518,7 @@ than 750px
   min-width: 130px;
   background: #111;
   color: var(--white);
-  padding: 1em;
+  padding: 0.4em;
   font-family: var(--monofont);
   display: flex;
   flex-direction: column;
@@ -553,7 +553,6 @@ than 750px
   margin-left: 4px;
 }
 .hud-val {
-	margin-right: 1em;
     float: right;
 }
 .hud-icon {
@@ -572,14 +571,16 @@ img.landscape {
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 1280px) {
+  .hud-large {
+    display: none;
+  }
+}
 /* Sur mobile (écran <= 600px de large) */
 @media screen and (max-width: 600px) {
   #header-text {
   	font-size: 14px;
     white-space: normal;
-  }
-  .hud-large {
-    display: none;
   }
   .hud-val {
 	margin-right: 0;
@@ -1103,7 +1104,7 @@ Après un long périple héroïque, bravant les éléments dans les monts de Ski
 &lt;&lt;/nobr&gt;&gt;
 Confiant, presque trop, Mablark entreprend la dernière épreuve : le garer devant sa demeure pour décharger l’arsenal de voyage de sa compagne et ses deux filles, les prises de leur dernière chasse et les 5 kg de fromage de Montagne qui l’avaient fait saliver durant tout le voyage.
 Mais dans l’ombre, une malédiction rôde encore… un sortilège perfide connu sous le nom de Manœuvre de Fin de Quête.
-&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/chariot2.png&quot;&gt;&lt;/span&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/chariot2.png&quot;&gt;&lt;/div&gt;
 À peine a-t-il tourné le gouvernail de direction que l’acier géant grince, ploie, racle contre les murailles invisibles de la destinée. Quand le silence retombe, il reste une cicatrice monumentale sur la carrosserie sacrée.
 
 Le chariot est brisé… et la guilde des Loueurs Usuriers réclame 25 pièces d’or en réparation. Une somme capable d’acheter une hache à deux mains +2 ou un séjour no limit au Hellfest.
@@ -1275,7 +1276,7 @@ Le vent siffle, les arbres défilent, la montagne tremble sous son élan.
 	&lt;&lt;set $gamechapter = &quot;Mablark et la Matrice des Gafam&quot;&gt;&gt;
 	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/tavern.jpeg&quot;&gt;&lt;/span&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/tavern.jpeg&quot;&gt;&lt;/div&gt;
 Dans une taverne enfumée, Mablark le Glabre sirote une tisane médicinale (dos fragile oblige) en bougonnant parce qu’il s’est mis à pleuvoir des trombes d’eau, empêchant notre valeureux aventurier de poursuivre sa quête.
 Soudain, un mystérieux vieillard encapuchonné s’approche : Morbagh le Barbu.
 
@@ -1428,7 +1429,7 @@ Mablark enfile un magnifique bracelet capfun et sent sa vigueur décupler..
 	&lt;&lt;set $gamechapter = &quot;Le réveil&quot;&gt;&gt;
 	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/reveil.png&quot;&gt;&lt;/span&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/reveil.png&quot;&gt;&lt;/div&gt;
 Mablark  se réveille, flottant nu dans une cuve translucide, branché à des câbles bardés de logos douteux : Amazon, Meta, DisneyCorp.
 Une étrange pieuvre rappelant Ghostface Chillah lui murmure : « Vous avez accepté les cookies. »
 &lt;&lt;nobr&gt;&gt;
@@ -1455,7 +1456,7 @@ On y retrouve Linus Torvaldson, chevauchant un pingouin géant, brandissant le m
 	&lt;&lt;nextDay&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 Leur mission ? Affronter l’Agent Zuckervampire, créature pâle qui aspire la donnée des mortels en levant son pouce vers le haut. Celui-ci ne tarde d’ailleurs pas à apparaître devant eux. Linus Torvaldson s’adresse alors à Mablark: “C’est ton combat. Nous avons foi en toi, tu peux le vaincre car tu es l’élu” Robertus n’ajoute rien mais procure à Mablark un bouclier au mystérieux sigle Ublock.
-&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/fight.png&quot;&gt;&lt;/span&gt;
+&lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/fight.png&quot;&gt;&lt;/div&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
     &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Aller au charbon.&lt;/div&gt;&#39; &#39;fight&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -1504,7 +1505,7 @@ Mais soudain, Morbagh le Barbu réapparaît…
 — « Bravo, Mablark. Mais sache… qu’il reste les extensions Chrome. »
 
 &lt;&lt;if $charisma &gt; 16&gt;&gt;
-  &lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/kubernepee.png&quot;&gt;&lt;/span&gt;
+  &lt;div class=&#39;img-holder&#39;&gt;&lt;img src=&quot;img/kubernepee.png&quot;&gt;&lt;/div&gt;
   Linus Torvaldson s’approche alors de notre héros et déclame d’un air solennel:
   -” tu as fait preuve de bravoure Mablark, ton charisme de &lt;&lt;=$charisma&gt;&gt; t’octroie la reconnaissance de tous. Je te fais chevalier de l’ordre du libre et te remet Kubernépée, la lame sacrée de la communauté du Libre. Va! De nombreux combats t’attendent!”
 &lt;&lt;audio &quot;epiphany&quot; fadein&gt;&gt;
