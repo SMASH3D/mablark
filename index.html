@@ -718,59 +718,69 @@ $( ".menutoggle-btn" ).on( "click", function() {
 });
 
 // CUSTOM CODE SMASH
-
-// Gestion navigation clavier sur les choix Twine
+// === NAVIGATION CLAVIER MABLARK ===
 $(document).on("keydown", function (event) {
-    let $choices = $(".choices .choice-item");
-    if ($choices.length === 0) return;
+    const $choices = $(".choices .choice-item");
+    const $menuItems = $(".menutoggle .choice-item"); // menu toggle items
+    const $backItem = $menuItems.eq(0); // l'item index 00 (retour)
 
-    // Vérifie si un élément est déjà sélectionné
+    // Vérifie si on est dans un passage avec des choix
+    if ($choices.length === 0 && !$backItem.length) return;
+
     let $current = $choices.filter(".selected");
     let index = $choices.index($current);
 
     switch (event.key) {
         case "ArrowDown":
-            event.preventDefault();
-            if (index < $choices.length - 1) {
+            if ($choices.length) {
+                event.preventDefault();
                 $current.removeClass("selected");
-                $choices.eq(index + 1).addClass("selected");
-            } else {
-                // boucle au début
-                $current.removeClass("selected");
-                $choices.eq(0).addClass("selected");
+                if (index < $choices.length - 1) {
+                    $choices.eq(index + 1).addClass("selected");
+                } else {
+                    $choices.eq(0).addClass("selected");
+                }
             }
             break;
 
         case "ArrowUp":
-            event.preventDefault();
-            if (index > 0) {
+            if ($choices.length) {
+                event.preventDefault();
                 $current.removeClass("selected");
-                $choices.eq(index - 1).addClass("selected");
-            } else {
-                // boucle à la fin
-                $current.removeClass("selected");
-                $choices.eq($choices.length - 1).addClass("selected");
+                if (index > 0) {
+                    $choices.eq(index - 1).addClass("selected");
+                } else {
+                    $choices.eq($choices.length - 1).addClass("selected");
+                }
             }
             break;
 
+        // ✅ ENTER, SPACE ou FLECHE DROITE pour valider
         case "Enter":
+        case " ":
+        case "ArrowRight":
             event.preventDefault();
             if ($current.length) {
-                $current.click(); // active le choix en surbrillance
+                $current.click();
             }
             break;
 
+        // ✅ BACKSPACE ou FLECHE GAUCHE pour revenir en arrière
         case "Backspace":
+        case "ArrowLeft":
             event.preventDefault();
-            if ($current.length) {
-                $current.click(); // active le choix en surbrillance
+            if ($backItem.length) {
+                $backItem.click(); // déclenche le retour menu index 00
+            } else {
+                // fallback Twine standard si menu absent
+                Engine.backward();
             }
             break;
 
         default:
-            // raccourcis numériques (1-9)
+            // Raccourcis numériques (1-9)
             if (event.key >= "1" && event.key <= "9") {
-                let numIndex = parseInt(event.key, 10) - 1;
+                const numIndex = parseInt(event.key, 10) - 1;
                 if ($choices.length > numIndex) {
                     $choices.eq(numIndex).click();
                 }
@@ -778,14 +788,15 @@ $(document).on("keydown", function (event) {
     }
 });
 
-// Quand un nouveau passage est affiché, on sélectionne automatiquement le premier choix
+// Sélection auto du premier choix à chaque passage
 $(document).on(":passagerender", function () {
-    let $choices = $(".choices .choice-item");
+    const $choices = $(".choices .choice-item");
     $choices.removeClass("selected");
     if ($choices.length) {
         $choices.eq(0).addClass("selected");
     }
 });
+
 
 Macro.add("nextDay", {
   handler() {
