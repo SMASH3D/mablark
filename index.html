@@ -899,7 +899,7 @@ Ainsi débuta la quête insensée de Mablark le Glabre : accomplir un fait de gu
 &lt;&lt;set $strength = 4&gt;&gt;
 &lt;&lt;set $craftmanship = 1&gt;&gt;
 &lt;&lt;set $gold = 50&gt;&gt;
-&lt;&lt;set $wisdom = 15&gt;&gt;
+&lt;&lt;set $wisdom = 6&gt;&gt;
 &lt;&lt;set $dot_duration = 0&gt;&gt;
 &lt;&lt;set $dot_dps = 0&gt;&gt;
 &lt;&lt;cacheaudio &quot;epiphany&quot; &quot;https://cdn.pixabay.com/audio/2022/03/24/audio_668ad29f0a.mp3&quot;&gt;&gt;
@@ -1014,11 +1014,11 @@ Mannagh, la joue tuméfiée, bredouille un « J’ai compris… » à peine cré
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
     [[1-&gt;rhume_scelerat]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="boulier_infaillible3" tags="" position="550,475" size="100,100">Mablark jette un dé de sagesse (D$wisdom).
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="boulier_infaillible3" tags="" position="550,475" size="100,100">Mablark fait un jet de sagesse à l’aide d’un D6 auquel il ajoute son score de sagesse ($wisdom).
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;D &gt;5.&lt;/div&gt;&#39; &#39;boulier3-effect1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;D &lt;= 5.&lt;/div&gt;&#39; &#39;boulier3-effect2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;D &gt;= 10.&lt;/div&gt;&#39; &#39;boulier3-effect1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;D &lt; 10.&lt;/div&gt;&#39; &#39;boulier3-effect2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
@@ -1030,7 +1030,7 @@ Mannagh, la joue tuméfiée, bredouille un « J’ai compris… » à peine cré
 &lt;&lt;nextDay&gt;&gt;
 Le problème du boulier réglé, Mablark le glabre peut enfin se mettre en route. Le soleil de la fin d’été réchauffe doucement sa peau. Il atteint l&#39;orée de la forêt en fin d’après-midi. Le vent secoue délicatement les branches et un doux parfum de sous-bois humide émane du tapis de feuilles mortes qui étouffe ses pas. Soudain, Mablark le Glabre sent un courant d’air perfide lui chatouiller les sinus.
 &lt;&lt;/nobr&gt;&gt;
-Une sournoise malédiction virale, invoquée par les chamans de la secte GAFAM (Garde des Âmes Faussées et des Artefacts Maudits), s’infiltre dans son corps déjà fragile.
+Une sournoise malédiction virale s’infiltre dans son corps déjà fragile.
 Ses narines se mettent à couler comme deux cascades du Styx, sa gorge rugit comme un vieux modem 56k, et son crâne résonne tel un tambour orc mal accordé.
 Mablark le sait : ce n’est pas un simple rhume…Il perd déjà &lt;span class=&#39;bad-news&#39;&gt;1&lt;/span&gt; PV.
 C’est le Rhume Scélérat, ennemi juré des constitutions fragiles et des hypochondres de légende.
@@ -1073,7 +1073,7 @@ C’est le Rhume Scélérat, ennemi juré des constitutions fragiles et des hypo
     [[1-&gt;rhume2-effect1]]
     [[2-&gt;rhume2-effect2]]
     [[3-&gt;rhume2-effect3]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="rhume3" tags="" position="725,850" size="100,100">Son manque d&#39;amour propre lui coûte immédiatement &lt;span class=&#39;bad-news&#39;&gt;1 point de charisme&lt;/span&gt;, puis mablark jète un dé de vitalité à $health faces pour déterminer l&#39;effet de ce cachet satanique.
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="rhume3" tags="" position="725,850" size="100,100">Son manque d’amour propre lui coûte immédiatement &lt;span class=&#39;bad-news&#39;&gt;1 point de charisme&lt;/span&gt;, puis Mablark fait un jet de vitalité à l’aide d’un dé à 12 faces pour déterminer l&#39;effet de ce cachet satanique.
   
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1131,7 +1131,7 @@ Le chariot est brisé… et la guilde des Loueurs Usuriers réclame 25 pièces d
     [[1-&gt;chariot1]]
     [[2-&gt;chariot2]]
     [[3-&gt;chariot3]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="skyvall2" tags="" position="800,1325" size="100,100">Mablark jète un dé d’agilité à 15 faces pour déterminer s’il contrôle sa trajectoire ou échoue lamentablement.
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="skyvall2" tags="" position="800,1325" size="100,100">Mablark jète un dé d’agilité à 12 faces pour déterminer s’il contrôle sa trajectoire ou échoue lamentablement.
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
@@ -1160,13 +1160,12 @@ Mablark jette un dé de chance 10 auquel il ajoute fourbement ses modestes aptit
     [[2-&gt;chariot1-effect1]]
     [[3-&gt;chariot1-effect2]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="chariot2" tags="" position="350,1625" size="100,100">&lt;&lt;nobr&gt;&gt;
-&lt;&lt;set _jet = random(1,$wisdom)&gt;&gt;
-Mablark jette un dé de charisme (D$charisma) et obtient un &lt;span class=&#39;result&#39;&gt;_jet&lt;/span&gt;.
+Mablark fait un jet de force à l’aide d’un dé à 8 faces auquel il ajoute ses impressionants &lt;&lt;=$strength&gt;&gt; points de force.
 &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&quot;choices&quot;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Dé &gt; 15.&lt;/div&gt;&#39; &#39;chariot2-effect1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Dé &lt;= 15.&lt;/div&gt;&#39; &#39;chariot2-effect2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Dé &gt; 10.&lt;/div&gt;&#39; &#39;chariot2-effect1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;&lt;link &#39;&lt;div class=&quot;choice-item&quot;&gt;Dé &lt;= 10.&lt;/div&gt;&#39; &#39;chariot2-effect2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;div class=&#39;no-show&#39;&gt;
@@ -1579,7 +1578,7 @@ Mablark tente bien un sortilège d’illusion — invoquant une soi-disant « ur
     &lt;&lt;set $wisdom += 1&gt;&gt;
     &lt;&lt;set $happiness += 1&gt;&gt;
 Mannagh comprend, gagne +1 en Savoir et le calme revient.
-Cette démonstration de sagesse et de patience paternelle lui vaut le respect de Koralagh, soulagée de ne pas avoir eu à s&#39;y coller.
+Cette démonstration de sagesse et de patience paternelle lui vaut le respect de Koralourk, soulagée de ne pas avoir eu à s’y coller.
 — &lt;span class=&quot;good-news&quot;&gt;Charisme +1&lt;/span&gt;
 — &lt;span class=&quot;good-news&quot;&gt;Moral +1&lt;/span&gt;
 — &lt;span class=&quot;good-news&quot;&gt;Sagesse +1&lt;/span&gt;
